@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "043148c9-ddad-43e7-a715-38f298a23514",
+		"_postman_id": "8303ba94-6cf4-4c65-8c28-f90eef0a7382",
 		"name": "Mercaditocr",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,12 +14,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/posts",
+							"raw": "http://localhost:5000/api/posts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8000",
+							"port": "5000",
 							"path": [
 								"api",
 								"posts"
@@ -34,22 +34,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/posts?title=post 1",
+							"raw": "http://localhost:5000/api/posts?title=post 1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8000",
+							"port": "5000",
 							"path": [
 								"api",
 								"posts"
 							],
 							"query": [
-								{
-									"key": "_id",
-									"value": "5e8834bd2ef5c6396c0080ec",
-									"disabled": true
-								},
 								{
 									"key": "title",
 									"value": "post 1"
@@ -74,16 +69,16 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/posts/5e8837d7ea3e55412479fe72",
+							"raw": "http://localhost:5000/api/posts/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8000",
+							"port": "5000",
 							"path": [
 								"api",
 								"posts",
-								"5e8837d7ea3e55412479fe72"
+								"1"
 							]
 						}
 					},
@@ -95,7 +90,17 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:5000/api/posts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"1"
+							]
 						}
 					},
 					"response": []
@@ -115,12 +120,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/posts",
+							"raw": "http://localhost:5000/api/posts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8000",
+							"port": "5000",
 							"path": [
 								"api",
 								"posts"
@@ -131,45 +136,6 @@
 				}
 			],
 			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Connected",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/api/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "partners",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/partners",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"partners"
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
