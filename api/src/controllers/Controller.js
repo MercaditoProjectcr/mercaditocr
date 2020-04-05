@@ -9,7 +9,7 @@ class Controller {
     this.delete = this.delete.bind(this);
   }
 
-  async getAll(req, res) {
+  async getAll(req, res, next) {
     return res.status(200).send(await this.service.getAll(req.query));
   }
 

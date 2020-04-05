@@ -1,11 +1,12 @@
 import Controller from  './Controller';
-import PostService from  "./../services/PostService";
-import Post from  "./../models/Post";
-const postService = new PostService(
-  new Post().getInstance()
+import UserService from  "./../services/UserService";
+import User from  "./../models/User";
+
+const userService = new UserService(
+  new User().getInstance()
 );
 
-class PostController extends Controller {
+class UserController extends Controller {
 
   constructor(service) {
     super(service);
@@ -25,4 +26,4 @@ class PostController extends Controller {
   
 }
 
-export default new PostController(postService);
+export default new UserController(userService);

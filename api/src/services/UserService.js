@@ -1,6 +1,6 @@
 import Service from './Service';
 
-class PostService extends Service {
+class UserService extends Service {
   constructor(model) {
     super(model);
   }
@@ -14,4 +14,4 @@ class PostService extends Service {
   }
 };
 
-export default PostService;
+export default UserService;
