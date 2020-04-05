@@ -1,24 +1,29 @@
-import PostController from './../src/controllers/PostController';
-import UserController from '../src/controllers/UserController';
+import { Router } from 'express';
+import routerPost from '../src/routes/posts.route';
+import routerUser from '../src/routes/users.route';
+import ErrorHandle from '../src/middlewares/error-handle';
+const getErrors = new ErrorHandle().getErrors;
+const router = Router();
 
-export default (app) => {
+// api
+router.get('/', (req, res, next) => {
+  res.status(200).send({
+   message: 'conected!'
+  })
+})
 
-  // POST ROUTES
-  const posts = '/api/posts';
-  app.get(posts, PostController.getAll);
-  app.get(`${posts}/:params`, PostController.get);
-  app.post(posts, PostController.insert)
-  app.put(`${posts}/:id`, PostController.update);
-  app.delete(`${posts}/:id`, PostController.delete);
+// api/posts
+router.use('/posts', routerPost)
 
-  // test
-  app.get('/test', PostController.test)
+// api/users
+router.use('/users', routerUser)
 
-  // Users routes
-  const users = '/api/users';
-  app.get(users, UserController.getAll);
-  app.get(`${users}/:params`, UserController.getAll);
-  app.post(users, UserController.insert)
-  app.put(`${users}/:id`, UserController.update)
-  app.delete(`${users}/:id`, UserController.delete)
-}
+// 404 not found
+router.all('*', (req, res) => {
+  res.status(404).send('The route does not exists');
+})
+
+// 505 error
+router.use(getErrors)
+
+export default router;
