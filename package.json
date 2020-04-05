@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/MercaditoProjectcr/mercaditocr/issues"
   },
-  "homepage": "https://github.com/MercaditoProjectcr/mercaditocr#readme"
+  "homepage": "https://github.com/MercaditoProjectcr/mercaditocr#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "material-ui": "^0.20.2"
+  }
 }
