@@ -1,10 +1,15 @@
-import express from "express";
-import bodyParser from "body-parser";
-const server = express();
+import express from 'express';
+import bodyParser, { urlencoded } from 'body-parser';
+import cors from 'cors';
+export const app = express();
+import setRoutes from './routes';
 
-server.use(bodyParser.json());
+app.disable('x-powered-by');
+app.use(bodyParser.json());
+app.use(cors());
+app.use(urlencoded({ extended: true}) )
 
-import setRoutes from "./routes";
-setRoutes(server);
+// setRoutes(app);
+app.use('/api', setRoutes)
 
-export default server;
+export default app;

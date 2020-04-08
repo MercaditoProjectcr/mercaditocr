@@ -1,15 +1,18 @@
 import mongoose from "mongoose";
+const { mongo } = mongoose;
+const { ObjectId } = mongo;
 
 class Service {
   constructor(model) {
     this.model = model;
-    this.getAll = this.getAll.bind(this);
-    this.insert = this.insert.bind(this);
+    this.findAll = this.findAll.bind(this);
+    this.create = this.create.bind(this);
     this.update = this.update.bind(this);
-    this.delete = this.delete.bind(this);
+    this.remove = this.remove.bind(this);
+    this.findOne = this.findOne.bind(this);
   }
 
-  async getAll(query) {
+  async findAll(query) {
     let { skip, limit } = query;
 
     skip = skip ? Number(skip) : 0;
@@ -20,18 +23,18 @@ class Service {
 
     if (query._id) {
       try {
-        query._id = new mongoose.mongo.ObjectId(query._id);
+        query._id = new ObjectId(query._id);
       } catch (error) {
         console.log("not able to generate mongoose id with content", query._id);
       }
     }
 
     try {
-      let items = await this.model
+      const items = await this.model
         .find(query)
         .skip(skip)
         .limit(limit);
-      let total = await this.model.count();
+      const total = await this.model.count();
 
       return {
         error: false,
@@ -39,31 +42,35 @@ class Service {
         data: items,
         total
       };
-    } catch (errors) {
-      return {
-        error: true,
-        statusCode: 500,
-        errors
-      };
+    } catch (error) {
+      throw new Error(error);
     }
   }
 
-  async insert(data) {
+  async findOne(id) {
+    try {
+      const _id = new ObjectId(id)
+      let item = await this.model.findOne({_id});
+      return {
+        error: false,
+        statusCode: 200,
+        item
+      };
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+  async create(data) {
     try {
       let item = await this.model.create(data);
       if (item)
         return {
           error: false,
+          statusCode: 201,
           item
         };
     } catch (error) {
-      console.log("error", error);
-      return {
-        error: true,
-        statusCode: 500,
-        message: error.errmsg || "Not able to create item",
-        errors: error.errors
-      };
+      throw new Error(error);
     }
   }
 
@@ -76,15 +83,11 @@ class Service {
         item
       };
     } catch (error) {
-      return {
-        error: true,
-        statusCode: 500,
-        error
-      };
+      throw new Error(error);
     }
   }
 
-  async delete(id) {
+  async remove(id) {
     try {
       let item = await this.model.findByIdAndDelete(id);
       if (!item)
@@ -114,11 +117,7 @@ class Service {
         item
       };
     } catch (error) {
-      return {
-        error: true,
-        statusCode: 500,
-        error
-      };
+      throw new Error(errors);
     }
   }
 }
