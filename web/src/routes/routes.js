@@ -1,4 +1,4 @@
-import SignIn from '../components/User/singin/singin.component'; 
+import SignIn from '../components/User/singin'; 
 import Home from '../components/home'; 
 
 import SigninIcon from '@material-ui/icons/ExitToApp';
