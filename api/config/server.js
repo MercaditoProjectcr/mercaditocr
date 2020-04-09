@@ -1,16 +1,15 @@
 import express from 'express';
-import bodyParser from 'body-parser';
-const server = express();
-import setRoutes from '../src/routes';
+import bodyParser, { urlencoded } from 'body-parser';
+import cors from 'cors';
+export const app = express();
+import setRoutes from './routes';
 
-// setRoutes(server);
-server.use('/api', setRoutes);
+app.disable('x-powered-by');
+app.use(bodyParser.json());
+app.use(cors());
+app.use(urlencoded({ extended: true}) )
 
-// default when the route does not exist
-server.all('*', (req, res) => {
-    res.status(404).send("you're lost?")
-  })
+// setRoutes(app);
+app.use('/api', setRoutes)
 
-server.use(bodyParser.json());
-
-export default server;
+export default app;
