@@ -2,42 +2,61 @@ class Controller {
 
   constructor(service) {
     this.service = service;
-    this.getAll = this.getAll.bind(this);
-    this.get = this.get.bind(this);
-    this.insert = this.insert.bind(this);
+    this.findAll = this.findAll.bind(this);
+    this.findOne = this.findOne.bind(this);
+    this.create = this.create.bind(this);
     this.update = this.update.bind(this);
-    this.delete = this.delete.bind(this);
+    this.remove = this.remove.bind(this);
   }
 
-  async getAll(req, res, next) {
-    return res.status(200).send(await this.service.getAll(req.query));
+  async findOne(req, res, next) {
+    try {
+      const { id } = req.params;
+      const response = await this.service.findOne(id);
+      return res.status(response.statusCode).send(response)
+    } catch (error) {
+      next(error.message);
+    }
   }
 
-  async get(req, res) {
-    let response = await this.service.get(req.params)
-    return res.status(response.statusCode).send(response);
+  async findAll(req, res, next) {
+    try {
+      let response = await this.service.findAll(req.params);
+      return res.status(response.statusCode).send(response);
+    } catch (error) {
+      next(error.message);
+    }
   }
 
-  async insert(req, res) {
-    let response = await this.service.insert(req.body);
-    if (response.error) return res.status(response.statusCode).send(response);
-    return res.status(201).send(response);
+  async create(req, res) {
+    try {
+      const response = await this.service.create(req.body);
+      return res.status(response.statusCode).send(response);
+    } catch (error) {
+      next(error.message);
+    }
+   
   }
 
   async update(req, res) {
-    const { id } = req.params;
-
-    let response = await this.service.update(id, req.body);
-
-    return res.status(response.statusCode).send(response);
+   
+    try {
+      const { id } = req.params;
+      const response = await this.service.update(id, req.body);
+      return res.status(response.statusCode).send(response);
+    } catch (error) {
+      next(error.message);
+    }
   }
 
-  async delete(req, res) {
-    const { id } = req.params;
-
-    let response = await this.service.delete(id);
-
-    return res.status(response.statusCode).send(response);
+  async remove(req, res) {
+    try {
+      const { id } = req.params;
+      const response = await this.service.remove(id);
+      return res.status(response.statusCode).send(response);
+    } catch (error) {
+      next(error.message); 
+    }
   }
   
 }
