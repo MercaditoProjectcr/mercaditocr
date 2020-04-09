@@ -5,8 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import styles from "./mainStyle"; 
 import routes from "../../routes/routes";
 
-import AppBar from "../appbar/appbar"; 
-import Footer from "../footer/footer";
+import AppBar from "../appbar"; 
+import Footer from "../footer";
 
 const useStyles = makeStyles(styles);
 

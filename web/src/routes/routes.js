@@ -1,5 +1,5 @@
 import SignIn from '../components/User/singin/singin.component'; 
-import Home from '../components/home/home.component'; 
+import Home from '../components/home'; 
 
 import SigninIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
