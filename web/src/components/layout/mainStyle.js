@@ -1,4 +1,3 @@
-const drawerWidth = 260;
 const transition = {
   transition: "all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)"
 };
@@ -17,7 +16,7 @@ const appStyle = theme => ({
   },
   mainPanel: {
     [theme.breakpoints.up("md")]: {
-      width: `calc(100% - ${drawerWidth}px)`
+      width: "100vw"
     },
     overflow: "auto",
     position: "relative",
@@ -29,7 +28,7 @@ const appStyle = theme => ({
   },
   content: {
     marginTop: "70px",
-    padding: "30px 15px",
+    padding: "0px",
     minHeight: "calc(100vh - 123px)"
   },
   container,
