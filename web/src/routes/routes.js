@@ -1,9 +1,18 @@
-import SignIn from '../components/User/singin'; 
 import Home from '../components/home'; 
+import SignIn from '../components/User/signin'; 
+import SignUp from '../components/User/signup'
 
-import SigninIcon from '@material-ui/icons/ExitToApp';
+import SignupIcon from '@material-ui/icons/ExitToApp';
+import SigninIcon from '@material-ui/icons/EmojiPeople';
 import HomeIcon from '@material-ui/icons/Home';
 const appRoutes = [
+  {
+    path: 'home',
+    name: 'Home',
+    icon: HomeIcon,
+    component: Home,
+    layout: '/',
+  },
   {
     path: 'signin',
     name: 'Iniciar Sesión',
@@ -12,11 +21,12 @@ const appRoutes = [
     layout: '/',
   },
   {
-    path: 'home',
-    name: 'Home',
-    icon: HomeIcon,
-    component: Home,
+    path: 'signup',
+    name: 'Registrarse',
+    icon: SignupIcon,
+    component: SignUp,
     layout: '/',
   },
+
 ];
 export default appRoutes; 
