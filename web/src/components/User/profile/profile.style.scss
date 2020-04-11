@@ -1,0 +1,36 @@
+.profileImgContainer{
+  max-width: 960px;
+  margin: 0 auto; 
+}
+.profileImage{
+  object-fit: cover;
+}
+.profileInfoContainer{
+    text-align: left;
+}
+
+
+//CSS breakpoints recomended in https://getflywheel.com/layout/css-breakpoints-responsive-design-how-to/,  for the most common devices
+
+@media (min-width: 640px){
+.MuiGrid-spacing-xs-1 {
+    flex-flow: column;
+}
+}
+ 
+@media (min-width: 768px){
+
+}
+ 
+@media (min-width: 1024px){
+ 
+ .MuiGrid-spacing-xs-1 {
+    flex-flow: row;
+}
+}
+ 
+@media (min-width: 1200px){
+ .MuiGrid-spacing-xs-1 {
+    flex-flow: row;
+}
+}
