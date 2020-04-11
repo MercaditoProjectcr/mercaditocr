@@ -58,9 +58,9 @@ const SignUp = () => {
     setsnackVariant("success");
   }
 
-  /*useEffect(() => {
+  useEffect(() => {
   
-  }, []);*/
+  }, []);
   return (
     <React.Fragment>
       <Snackbar
