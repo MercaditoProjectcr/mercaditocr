@@ -7,26 +7,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Link } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 import * as img from '../../../images'
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://example.com/">
-        Mercadito C.R
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -35,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${img.StoreImg})`,
     backgroundRepeat: 'no-repeat',
     backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+    theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
@@ -61,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 const Signin = () => {
   const classes = useStyles();
 
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -71,16 +58,16 @@ const Signin = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Iniciar Sesión 
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form}>
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="Email"
               name="email"
               autoComplete="email"
               autoFocus
@@ -91,14 +78,14 @@ const Signin = () => {
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Contraseña"
               type="password"
               id="password"
               autoComplete="current-password"
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              label="Recordar"
             />
             <Button
               type="submit"
@@ -107,23 +94,15 @@ const Signin = () => {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              Iniciar
             </Button>
             <Grid container>
               <Grid item xs>
                 <Link to="/" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link to="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  ¿Olvidó su clave?
                 </Link>
               </Grid>
             </Grid>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
           </form>
         </div>
       </Grid>
@@ -131,3 +110,25 @@ const Signin = () => {
   );
 }
 export default Signin;
+
+/*
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://example.com/">
+        Mercadito C.R
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+import Box from '@material-ui/core/Box';
+<Grid item>
+  <Link to="/signup" variant="body2">
+    {"Don't have an account? Sign Up"}
+  </Link>
+</Grid>
+*/
