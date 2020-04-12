@@ -4,10 +4,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
+import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
+
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+
+import ProfileInformation from './profileInformation'; 
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -17,8 +20,8 @@ function TabPanel(props) {
       component="div"
       role="tabpanel"
       hidden={value !== index}
-      id={`scrollable-force-tabpanel-${index}`}
-      aria-labelledby={`scrollable-force-tab-${index}`}
+      id={`scrollable-prevent-tabpanel-${index}`}
+      aria-labelledby={`scrollable-prevent-tab-${index}`}
       {...other}
     >
       {value === index && <Box p={3}>{children}</Box>}
@@ -34,8 +37,8 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
   return {
-    id: `scrollable-force-tab-${index}`,
-    'aria-controls': `scrollable-force-tabpanel-${index}`,
+    id: `scrollable-prevent-tab-${index}`,
+    'aria-controls': `scrollable-prevent-tabpanel-${index}`,
   };
 }
 
@@ -57,25 +60,23 @@ export default function ProfileTabItems() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static">
         <Tabs
           value={value}
           onChange={handleChange}
           variant="scrollable"
-          scrollButtons="on"
-          indicatorColor="primary"
-          textColor="primary"
-          aria-label="scrollable force tabs example"
+          scrollButtons="off"
+          aria-label="scrollable prevent tabs example"
         >
-          <Tab label="Información" icon={<PersonPinIcon />} {...a11yProps(0)} />
-          <Tab label="Item Two" icon={<FavoriteIcon />} {...a11yProps(1)} />
+          <Tab icon={<PersonPinIcon />} aria-label="Informacón personal" {...a11yProps(2)} />
+          <Tab icon={<ShoppingBasket />} aria-label="Servicios" {...a11yProps(4)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        acá se renderiza el componente
+        <ProfileInformation />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        y el otro
+        La parte de los servicios/productos que ofrece... hay que idear que meterle
       </TabPanel>
     </div>
   );
