@@ -4,20 +4,20 @@ import uniqueValidator from "mongoose-unique-validator";
 const dto = {
   name: {
     type: String,
-    required: true,
+    required: false,
   },
   lastName: {
     type: String,
-    required: true,
+    required: false,
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: false // TODO change to false
   },
   username: {
     type: String,
-    required: true,
+    required: false,
     unique: true
   },
   password: {
@@ -49,10 +49,14 @@ const dto = {
     }
   }
 }
+const options = {
+  versionKey: false
+}
+
 class User {
 
   initSchema() {
-    const schema = new Schema(dto, { timestamps: true });
+    const schema = new Schema(dto, options, { timestamps: true });
     schema.pre(
       "save",
       function(next) {        

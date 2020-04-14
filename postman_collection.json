@@ -57,7 +57,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/posts?title=post 1",
+							"raw": "http://localhost:5000/api/posts/5e8907d0aa907d3cd82c7eb1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -65,13 +65,8 @@
 							"port": "5000",
 							"path": [
 								"api",
-								"posts"
-							],
-							"query": [
-								{
-									"key": "title",
-									"value": "post 1"
-								}
+								"posts",
+								"5e8907d0aa907d3cd82c7eb1"
 							]
 						}
 					},
@@ -164,7 +159,7 @@
 			"name": "Users",
 			"item": [
 				{
-					"name": "findAll Users",
+					"name": "findOne User",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -192,7 +187,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/users",
+							"raw": "http://localhost:5000/api/users/5e8950bfd972ee56a85ad84d",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -200,14 +195,15 @@
 							"port": "5000",
 							"path": [
 								"api",
-								"users"
+								"users",
+								"5e8950bfd972ee56a85ad84d"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "FindOne User",
+					"name": "FindAll Users",
 					"request": {
 						"method": "GET",
 						"header": [],
