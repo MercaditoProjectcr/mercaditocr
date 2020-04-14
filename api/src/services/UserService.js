@@ -6,11 +6,6 @@ const { ObjectId } = mongo;
 class UserService {
   constructor() {
     this.model = new User().getInstance();
-    this.findAll = this.findAll.bind(this);
-    this.signUp = this.signUp.bind(this);
-    this.update = this.update.bind(this);
-    this.remove = this.remove.bind(this);
-    this.findOne = this.findOne.bind(this);
   }
 
   async findAll(query) {
@@ -31,17 +26,14 @@ class UserService {
     }
 
     try {
-      const items = await this.model
-        .find(query)
-        .skip(skip)
-        .limit(limit);
-      const total = await this.model.count();
+      const items = await this.model.find(query).skip(skip).limit(limit);
+      const total = await this.model.countDocuments();
 
       return {
         error: false,
         statusCode: 200,
         data: items,
-        total
+        total,
       };
     } catch (error) {
       throw new Error(error);
@@ -50,12 +42,12 @@ class UserService {
 
   async findOne(id) {
     try {
-      const _id = new ObjectId(id)
-      const item = await this.model.findOne({_id});
+      const _id = new ObjectId(id);
+      const item = await this.model.findOne({ _id });
       return {
         error: false,
         statusCode: 200,
-        item
+        item,
       };
     } catch (error) {
       throw new Error(error);
@@ -69,57 +61,84 @@ class UserService {
         return {
           error: false,
           statusCode: 201,
-          item
+          item,
         };
     } catch (error) {
       throw new Error(error);
     }
+  }
+
+  isEmptyEmailAndPassword(params) {
+    const { email, password } = params;
+    if (!email)
+      throw new Error('email is missing');
+    if (!password)
+      throw new Error('passwords is missing');
   }
 
   async signUp(data) {
     try {
       const { Roles } = data;
+      this.isEmptyEmailAndPassword(data);
       const Preferences = {
         img: '/home/img',
-        location: 'Yor currect location'
-      }
-      if(!Roles) {
+        location: 'Yor currect location',
+      };
+      if (!Roles) {
         data.Roles = {
-          type: "user" // user, owner, client
-        }
+          type: 'user', // user, owner, client
+        };
       }
+      data.username = data.email;
       const newUser = {
-        ...data, Preferences
-      }
+        ...data,
+        Preferences,
+      };
       const user = await this.model.create(newUser);
       if (user)
         return {
           error: false,
           statusCode: 201,
-          user
+          user,
         };
     } catch (error) {
       throw new Error(error);
     }
   }
 
-  async signIn(params) {
+  async findByEmail(params) {
+    const { email } = params
     try {
-     const user = await this.findAll(params);
-     const { data } = user;
-     if(data.length > 0) {
+      if(!email) throw new Error('email is missing');
+      const user = await this.findAll({email});
       return {
         error: false,
         statusCode: 200,
-        user: data[0]
+        user,
       };
-     } else {
-      return {
-        error: true,
-        statusCode: 404,
-        message: 'User not found'
-      };
-     }
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+  async signIn(params) {
+    try {
+      this.isEmptyEmailAndPassword(params);
+      const { email, password } = params;
+      const user = await this.findAll({email, password});
+      const { data } = user;
+      if (data.length > 0) {
+        return {
+          error: false,
+          statusCode: 200,
+          user: data[0],
+        };
+      } else {
+        return {
+          error: true,
+          statusCode: 404,
+          message: 'User not found',
+        };
+      }
     } catch (error) {
       throw new Error(error);
     }
@@ -130,7 +149,7 @@ class UserService {
       return {
         error: false,
         statusCode: 202,
-        user
+        user,
       };
     } catch (error) {
       throw new Error(error);
@@ -144,19 +163,19 @@ class UserService {
         return {
           error: true,
           statusCode: 404,
-          message: "item not found"
+          message: 'item not found',
         };
 
-      console.log("removed item", item);
+      console.log('removed item', item);
 
       if (item.path) {
-        console.log("unlink item", item.path);
-        fs.unlink(item.path, function(err) {
+        console.log('unlink item', item.path);
+        fs.unlink(item.path, function (err) {
           if (err) {
-            console.log("error deleting file");
+            console.log('error deleting file');
             throw err;
           }
-          console.log("File deleted!");
+          console.log('File deleted!');
         });
       }
 
@@ -164,7 +183,7 @@ class UserService {
         error: false,
         deleted: true,
         statusCode: 202,
-        item
+        item,
       };
     } catch (error) {
       throw new Error(errors);

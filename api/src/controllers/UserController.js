@@ -5,6 +5,7 @@ class UserController {
     this.service = new UserService();
     this.findAll = this.findAll.bind(this);
     this.findOne = this.findOne.bind(this);
+    this.findByEmail = this.findByEmail.bind(this);
     this.singIn = this.singIn.bind(this);
     this.singUp = this.singUp.bind(this);
     this.update = this.update.bind(this);
@@ -22,9 +23,9 @@ class UserController {
   }
 
   async findAll(req, res, next) {
-    console.log('req', req);
     try {
-      let response = await this.service.findAll(req.params);
+      // const response = await this.service.findAll(req.params);
+      const response = await this.service.findAll(req.params);
       return res.status(response.statusCode).send(response);
     } catch (error) {
       next(error.message);
@@ -33,21 +34,24 @@ class UserController {
 
   async singUp(req, res, next) {
    try {
-    const data = await this.service.signUp(req.body)
-    return res.status(200).send({
-      message: 'success',
-      data
-    });
+    const response = await this.service.signUp(req.body)
+    return res.status(response.statusCode).send(response);
    } catch (error) {
      next(error.message)
    }
   }
 
-  async singIn(req, res, next) {
-    const { email, password } = req.body;
-    const params = { email, password };
+  async findByEmail(req, res, next) {
     try {
-      const response = await this.service.signIn(params);
+      const response = await this.service.findByEmail(req.body);
+      return res.status(response.statusCode).send(response);
+    } catch (error) {
+      next(error.message);
+    }
+  }
+  async singIn(req, res, next) {
+    try {
+      const response = await this.service.signIn(req.body);
       return res.status(response.statusCode).send(response);
    } catch (error) {
      next(error.message)

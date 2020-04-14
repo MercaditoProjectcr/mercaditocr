@@ -315,7 +315,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email3@gmail.com\",\r\n    \"password\": \"773yhRE{\"\r\n}",
+							"raw": "{\r\n    \"email\": \"email4@gmail.com\",\r\n    \"password\": \"773yhRE{\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -363,6 +363,36 @@
 								"api",
 								"users",
 								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify Email User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"email3@gmail.com\"\r\n\t\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users/verifyEmail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"verifyEmail"
 							]
 						}
 					},
