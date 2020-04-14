@@ -26,7 +26,7 @@ class UserService {
     }
 
     try {
-      const items = await this.model.find(query).skip(skip).limit(limit);
+      const items = await this.model.find(query).select('-password').skip(skip).limit(limit);
       const total = await this.model.countDocuments();
 
       return {
@@ -43,7 +43,7 @@ class UserService {
   async findOne(id) {
     try {
       const _id = new ObjectId(id);
-      const item = await this.model.findOne({ _id });
+      const item = await this.model.findOne({ _id }).select('-password');
       return {
         error: false,
         statusCode: 200,
@@ -95,12 +95,14 @@ class UserService {
         Preferences,
       };
       const user = await this.model.create(newUser);
-      if (user)
+      if (user) {
+        user.password = undefined;
         return {
           error: false,
           statusCode: 201,
           user,
         };
+      }
     } catch (error) {
       throw new Error(error);
     }
@@ -110,7 +112,7 @@ class UserService {
     const { email } = params
     try {
       if(!email) throw new Error('email is missing');
-      const user = await this.findAll({email});
+      const user = await this.findAll({email})
       return {
         error: false,
         statusCode: 200,
