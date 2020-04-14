@@ -112,11 +112,12 @@ class UserService {
     const { email } = params
     try {
       if(!email) throw new Error('email is missing');
-      const user = await this.findAll({email})
+      const user = await this.findAll({email});
+      const { data } = user;
       return {
         error: false,
         statusCode: 200,
-        user,
+        email: data[0].email,
       };
     } catch (error) {
       throw new Error(error);
