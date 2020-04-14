@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/MercaditoProjectcr/mercaditocr/issues"
   },
-  "homepage": "https://github.com/MercaditoProjectcr/mercaditocr#readme"
+  "homepage": "https://github.com/MercaditoProjectcr/mercaditocr#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-react": "^7.19.0"
+  }
 }
