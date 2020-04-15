@@ -1,17 +1,24 @@
 import { Router, response } from 'express';
 import UserController from '../controllers/UserController';
-const { findAll, findOne, find, create, update, remove } = UserController;
+const { findAll, findOne, singUp, findByEmail, singIn, update, remove } = UserController;
+
 const routerUser = Router();
 
-// /api/user
 routerUser.route('/')
 .get(findAll)
-.post(create)
 
-// /api/user/:id
 routerUser.route('/:id')
 .get(findOne)
 .put(update)
 .delete(remove)
+
+routerUser.route('/signup')
+.post(singUp)
+
+routerUser.route('/signin')
+.post(singIn)
+
+routerUser.route('/verifyEmail')
+.post(findByEmail)
 
 export default routerUser;
