@@ -68,6 +68,7 @@ const ProfileInformation = () => {
             "success", 
             "Imagen cargada con éxito"
           );
+          setIsEdit(false); 
         }
         else{
           chargeSnack(
