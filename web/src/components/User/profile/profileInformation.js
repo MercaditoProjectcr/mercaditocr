@@ -60,7 +60,7 @@ const ProfileInformation = () => {
   const onFileChange = async (e) => {
     if (e.target.files && e.target.files.length > 0) {
       if(permitedFormatFile.includes(e.target.files[0].type)){
-        if(e.target.files[0].size <= 2097152){
+        if(e.target.files[0].size <= 6291456){
           const file = e.target.files[0];
           let imageDataUrl = await readFile(file);
           setProfileImg(imageDataUrl);
@@ -82,7 +82,7 @@ const ProfileInformation = () => {
       else{
           chargeSnack(
             "error",
-            `No se permiten archivos de tipo ${e.target.files[0].type} intente de nuevo`
+            `No se permite ${e.target.files[0].type} intente de nuevo`
           );
           setProfileImg(null);
       }
@@ -227,7 +227,7 @@ const ProfileInformation = () => {
                   Editar imagen
                 </Button>
               ) : (
-                <input type="file" onChange={onFileChange} />
+                <input type="file" onChange={onFileChange} accept=".jpg,.jpeg, .JPG, .png"/>
               )}
             </Grid>
           </Grid>
