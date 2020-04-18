@@ -90,6 +90,7 @@ const ProfileInformation = () => {
       chargeSnack("error", "Intente de nuevo...");
     }
   };
+
   return (
     <div>
       <Snackbar
@@ -98,7 +99,7 @@ const ProfileInformation = () => {
           horizontal: "left",
         }}
         open={open}
-        autoHideDuration={5000}
+        autoHideDuration={4000}
         onClose={handleClose}
       >
         <SnackBarContent

@@ -8,17 +8,17 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Snackbar from '@material-ui/core/Snackbar';
-
+import Snackbar from "@material-ui/core/Snackbar";
+import * as cons from "../../../const";
 //'success', 'warning', 'error', 'info'
 import SnackBarContent from "../../snackbar";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -39,28 +39,32 @@ const SignUp = () => {
   const [snackVariant, setsnackVariant] = useState(null);
   const [open, setOpen] = useState(false);
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const handleClose = (event, reason) => {
-      if (reason === 'clickaway') {
-        return;
-      }
-      setOpen(false); 
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
   };
-  /*const snackTest = () => {
-    setMessage("Alert test");
-    setOpen(true); 
-    setsnackVariant("success");
-    console.log('clicked!'); 
-  }*/
 
-  const handleSubmit = () => {
-    setMessage("Alert test");
-    setOpen(true); 
-    setsnackVariant("success");
-  }
+  const chargeSnack = (variant, message) => {
+    setsnackVariant(variant);
+    setMessage(message);
+    setOpen(true);
+  };
 
-  useEffect(() => {
-  
-  }, []);
+  /*const validate = (email) => {
+    const expression = cons.expression;
+    return expression.test(String(email).toLowerCase());
+  };*/ 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    chargeSnack("success", "Exitoso");
+  };
+
+  useEffect(() => {}, []);
   return (
     <React.Fragment>
       <Snackbar
@@ -69,7 +73,7 @@ const SignUp = () => {
           horizontal: "left",
         }}
         open={open}
-        autoHideDuration={5000}
+        autoHideDuration={4000}
         onClose={handleClose}
       >
         <SnackBarContent
@@ -94,15 +98,22 @@ const SignUp = () => {
                   variant="outlined"
                   required
                   fullWidth
+                  value={email || ""}
                   id="email"
                   label="Email"
                   name="email"
                   autoComplete="email"
+                  type="email"
+                  onChange={event => {
+                      event.preventDefault();
+                      setEmail(event.target.value)
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   variant="outlined"
+                  value={password || ""}
                   required
                   fullWidth
                   name="password"
@@ -110,6 +121,10 @@ const SignUp = () => {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={event => {
+                      event.preventDefault();
+                      setPassword(event.target.value)
+                  }}
                 />
               </Grid>
             </Grid>

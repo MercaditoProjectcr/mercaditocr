@@ -1,10 +1,12 @@
 .profileImgContainer{
-  max-width: 100%;
-  margin: 0 auto; 
+    width: 120px;
+    min-height: 120px;
+    max-height: auto; 
+    margin: auto;
 }
 .profileImg{
-  object-fit: cover;
-  width: 10vw;
+    max-width: 100%;
+    height: auto;
 }
 .profileInfoContainer{
     text-align: left;
@@ -27,7 +29,8 @@
     padding-right: 0px !important;
 }
 .profileImg{
-  width: 30vw;
+    max-width: 100%;
+    height: auto;
 }
 }
 
