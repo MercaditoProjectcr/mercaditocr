@@ -14,11 +14,13 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-fileupload": "^1.1.7-alpha.3",
     "mongoose": "^5.7.7",
     "mongoose-unique-validator": "^2.0.3",
-    "slugify": "^1.3.5",
-    "cors": "^2.8.5"
+    "morgan": "^1.10.0",
+    "slugify": "^1.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
