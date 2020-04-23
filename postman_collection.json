@@ -208,7 +208,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/users?name=rafa",
+							"raw": "http://localhost:5000/api/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -221,7 +221,8 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "rafa"
+									"value": "rafa",
+									"disabled": true
 								}
 							]
 						}
@@ -234,8 +235,19 @@
 						"method": "PUT",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n      \"username\": \"elputo\"\r\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "elputo",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/J4R/Pictures/25310920_751057395086182_4302570547139140988_o.jpg"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -274,35 +286,6 @@
 								"api",
 								"users",
 								"5e895253d972ee56a85ad853"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create User",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"jose\",\r\n    \"lastName\": \"lastname\",\r\n    \"email\": \"email1@gmail.com\",\r\n    \"username\": \"j4r\",\r\n    \"password\": \"773yhRE{\",\r\n    \"enable\": true,\r\n    \"token\": \"mytoken123\",\r\n    \"Roles\": {\r\n    \t\"type\": \"admin\"\r\n    },\r\n    \"Preferences\": {\r\n    \t\"img\": \"/home/img\",\r\n    \t\"location\": \"GPS\"\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:5000/api/users",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"users"
 							]
 						}
 					},
