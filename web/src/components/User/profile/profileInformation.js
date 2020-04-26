@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
-
+import Typography from "@material-ui/core/Typography"
 import NameIcon from "@material-ui/icons/AccountCircle";
 import PhoneIcon from "@material-ui/icons/ContactPhone";
 import EmailIcon from "@material-ui/icons/AlternateEmail";
@@ -16,6 +16,7 @@ import SnackBarContent from "../../snackbar";
 import EditIcon from "@material-ui/icons/Edit";
 
 import * as img from "../../../images/";
+import * as cons from "../../../const"
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -24,11 +25,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const permitedFormatFile = [
-  'image/jpg',
-  'image/jpeg',
-  'image/png'
-];
 const ProfileInformation = () => {
   const classes = useStyles();
   const [message, setMessage] = useState(null);
@@ -59,7 +55,7 @@ const ProfileInformation = () => {
   };
   const onFileChange = async (e) => {
     if (e.target.files && e.target.files.length > 0) {
-      if(permitedFormatFile.includes(e.target.files[0].type)){
+      if(cons.permitedFormatFile.includes(e.target.files[0].type)){
         if(e.target.files[0].size <= 6291456){
           const file = e.target.files[0];
           let imageDataUrl = await readFile(file);
@@ -73,7 +69,7 @@ const ProfileInformation = () => {
         else{
           chargeSnack(
             "error",
-            `No se permiten archivos mayores a 2MB, intente de nuevo`
+            `No se permiten archivos mayores a 6MB, intente de nuevo`
           );
           setProfileImg(null);
         }
@@ -82,7 +78,7 @@ const ProfileInformation = () => {
       else{
           chargeSnack(
             "error",
-            `No se permite ${e.target.files[0].type} intente de nuevo`
+            `Formato no permitido, solo png y jpeg`
           );
           setProfileImg(null);
       }
@@ -111,6 +107,11 @@ const ProfileInformation = () => {
       <Grid container direction="row" spacing={2}>
         <Grid item xs={12} sm={8}>
           <Grid container direction="column">
+                  <Grid item sm={12}>
+        <Typography variant="h5" component="h2">
+          Informacion personal
+        </Typography>
+      </Grid>
             <Grid item xs={12} sm={12}>
               <TextField
                 className={classes.margin}
@@ -198,8 +199,8 @@ const ProfileInformation = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Grid container direction="column">
-            <Grid item xs={12} sm={12} alignItems="center">
+          <Grid container direction="column" alignItems="center">
+            <Grid item xs={12} sm={12} >
               <div className="profileImgContainer">
                 {profileImg === null ? (
                   <img
@@ -216,7 +217,7 @@ const ProfileInformation = () => {
                 )}
               </div>
             </Grid>
-            <Grid item xs={12} sm={12} alignItems="center">
+            <Grid item xs={12} sm={12} className="image-upload">
               {!isEdit ? (
                 <Button
                   variant="contained"
@@ -227,8 +228,8 @@ const ProfileInformation = () => {
                 >
                   Editar imagen
                 </Button>
-              ) : (
-                <input type="file" onChange={onFileChange} accept=".jpg,.jpeg, .JPG, .png"/>
+              ) : (                
+                <input id="profileImgInput" type="file" onChange={onFileChange} accept=".jpg,.jpeg, .JPG, .png"/>
               )}
             </Grid>
           </Grid>
