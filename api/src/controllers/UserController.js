@@ -24,7 +24,6 @@ class UserController {
 
   async findAll(req, res, next) {
     try {
-      // const response = await this.service.findAll(req.params);
       const response = await this.service.findAll(req.params);
       return res.status(response.statusCode).send(response);
     } catch (error) {
@@ -61,7 +60,7 @@ class UserController {
   async update(req, res, next) {
     try {
       const { id } = req.params;
-      const response = await this.service.update(id, req.body);
+      const response = await this.service.update(id, req);
       return res.status(response.statusCode).send(response);
     } catch (error) {
       next(error.message);

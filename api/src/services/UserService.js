@@ -1,11 +1,13 @@
 import mongoose from 'mongoose';
 import User from '../models/User';
+import UploadImg from './UploadImg';
 const { mongo } = mongoose;
 const { ObjectId } = mongo;
 
 class UserService {
   constructor() {
     this.model = new User().getInstance();
+    this.img = new UploadImg();
   }
 
   async findAll(query) {
@@ -146,13 +148,23 @@ class UserService {
       throw new Error(error);
     }
   }
-  async update(id, data) {
+  async update(id, req) {
     try {
-      const user = await this.model.findByIdAndUpdate(id, data, { new: true });
+      const data = req.body;
+      const img = await this.img.sendAvatar(req.files);
+      const Preferences = { img }
+      data.Preferences = Preferences
+      const opt = {
+        new: true,
+        upsert: true
+      } 
+      const user = await this.model.findByIdAndUpdate(id, data, opt);
+      console.log('user', data);
+      
       return {
         error: false,
         statusCode: 202,
-        user,
+        data: user
       };
     } catch (error) {
       throw new Error(error);
