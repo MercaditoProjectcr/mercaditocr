@@ -9,7 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Snackbar from "@material-ui/core/Snackbar";
-import * as cons from "../../../const";
 //'success', 'warning', 'error', 'info'
 import SnackBarContent from "../../snackbar";
 
