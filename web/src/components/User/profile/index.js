@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-import ProfileTabItems from "./profileTabOptions";
+import ProfileTabItems from "../userTabOptions";
 import "./profile.style.css";
 import * as img from "../../../images/";
 
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: "center",
+    //textAlign: "center",
     color: theme.palette.text.secondary,
   },
   button: {
