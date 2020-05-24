@@ -1,10 +1,14 @@
+/*
+ * Created on Sun May 24 2020
+ *
+ * Author: Jose Chavarría
+ * Github: @josechavarriacr
+ */
 import { Router } from 'express';
 import routerPost from '../src/routes/posts.route';
 import routerUser from '../src/routes/users.route';
 import routerPublic from '../src/routes/public.route';
-import ErrorHandle from '../src/middlewares/error-handle';
-
-const { getErrors } = new ErrorHandle();
+import getErrors from '../src/middlewares/error-handle';
 const router = Router();
 
 // api

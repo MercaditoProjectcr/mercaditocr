@@ -12,6 +12,12 @@ export const app = express();
 const accessLogStream = fs.createWriteStream(path.resolve(__dirname , '../access.log'), { flags: 'a' })
 // setup the logger
 app.use(morgan('combined', { stream: accessLogStream }))
+/*
+ * Created on Sun May 24 2020
+ *
+ * Author: Jose Chavarría
+ * Github: @josechavarriacr
+ */
 app.use(morgan('dev'))
 
 // enable files upload

@@ -1,3 +1,9 @@
+/*
+ * Created on Sun May 24 2020
+ *
+ * Author: Jose Chavarría
+ * Github: @josechavarriacr
+ */
 import Controller from './Controller';
 import PostService from '../services/PostService';
 import Post from '../models/Post';

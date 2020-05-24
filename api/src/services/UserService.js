@@ -1,3 +1,9 @@
+/*
+ * Created on Sun May 24 2020
+ *
+ * Author: Jose Chavarría
+ * Github: @josechavarriacr
+ */
 import mongoose from 'mongoose';
 import User from '../models/User';
 import UploadImg from './UploadImg';
