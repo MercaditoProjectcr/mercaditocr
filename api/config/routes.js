@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import routerPost from '../src/routes/posts.route';
 import routerUser from '../src/routes/users.route';
+import routerPublic from '../src/routes/public.route';
 import ErrorHandle from '../src/middlewares/error-handle';
 
 const { getErrors } = new ErrorHandle();
@@ -18,6 +19,9 @@ router.use('/posts', routerPost);
 
 // api/users
 router.use('/users', routerUser);
+
+// api/public
+router.use('/public', routerPublic)
 
 // 404 not found
 router.all('*', (req, res) => {

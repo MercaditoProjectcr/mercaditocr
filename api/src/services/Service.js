@@ -37,7 +37,7 @@ class Service {
       const total = await this.model.count();
 
       return {
-        error: false,
+        status: true,
         statusCode: 200,
         data: items,
         total
@@ -52,7 +52,7 @@ class Service {
       const _id = new ObjectId(id)
       let item = await this.model.findOne({_id});
       return {
-        error: false,
+        status: true,
         statusCode: 200,
         item
       };
@@ -65,7 +65,7 @@ class Service {
       let item = await this.model.create(data);
       if (item)
         return {
-          error: false,
+          status: true,
           statusCode: 201,
           item
         };
@@ -78,7 +78,7 @@ class Service {
     try {
       let item = await this.model.findByIdAndUpdate(id, data, { new: true });
       return {
-        error: false,
+        status: true,
         statusCode: 202,
         item
       };
@@ -92,7 +92,7 @@ class Service {
       let item = await this.model.findByIdAndDelete(id);
       if (!item)
         return {
-          error: true,
+          status: false,
           statusCode: 404,
           message: "item not found"
         };
@@ -111,7 +111,7 @@ class Service {
       }
 
       return {
-        error: false,
+        status: true,
         deleted: true,
         statusCode: 202,
         item
