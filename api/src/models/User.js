@@ -13,13 +13,13 @@ const dto = {
   },
   email: {
     type: String,
-    required: false, // TODO change to true
-    unique: false, // TODO change to true
+    required: true, // TODO change to true
+    unique: true, // TODO change to true
   },
   username: {
     type: String,
-    required: false, // TODO change to true
-    unique: false, // TODO change to true
+    required: true, // TODO change to true
+    unique: true, // TODO change to true
   },
   password: {
     type: String,

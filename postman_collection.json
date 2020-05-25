@@ -23,7 +23,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYzlmMDhlMzI0NGZmMDliYzkxMzlmZCIsImlhdCI6MTU5MDM0ODYxMSwiZXhwIjoxNTkwNDM1MDExfQ.4rfUPYnGC2HiiiRfQddetIyuX1J8_yxpA8gMM-4tQI4",
 								"type": "text"
 							}
 						],
@@ -187,7 +187,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/users/5e8950bfd972ee56a85ad84d",
+							"raw": "http://localhost:5000/api/users/5ec9f08e3244ff09bc9139fd",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -196,7 +196,7 @@
 							"path": [
 								"api",
 								"users",
-								"5e8950bfd972ee56a85ad84d"
+								"5ec9f08e3244ff09bc9139fd"
 							]
 						}
 					},
@@ -206,7 +206,13 @@
 					"name": "FindAll Users",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYzlmMDhlMzI0NGZmMDliYzkxMzlmZCIsImlhdCI6MTU5MDM0ODYxMSwiZXhwIjoxNTkwNDM1MDExfQ.4rfUPYnGC2HiiiRfQddetIyuX1J8_yxpA8gMM-4tQI4",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:5000/api/users?name=rafa",
 							"protocol": "http",
@@ -295,59 +301,7 @@
 		},
 		{
 			"name": "Products",
-			"item": [
-				{
-					"name": "Create Product",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\": \"ProductThree\",\n\t\"description\": \"Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs\",\n\t\"categories\": {\n\t\t\"id\": 4\n\t\t}\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://64.225.126.33/Products",
-							"protocol": "http",
-							"host": [
-								"64",
-								"225",
-								"126",
-								"33"
-							],
-							"path": [
-								"Products"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get All Products",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://64.225.126.33/Products",
-							"protocol": "http",
-							"host": [
-								"64",
-								"225",
-								"126",
-								"33"
-							],
-							"path": [
-								"Products"
-							]
-						}
-					},
-					"response": []
-				}
-			],
+			"item": [],
 			"protocolProfileBehavior": {}
 		},
 		{
@@ -438,6 +392,110 @@
 								"api",
 								"public",
 								"verifyEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/test",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYzlmMDhlMzI0NGZmMDliYzkxMzlmZCIsImlhdCI6MTU5MDM0ODYxMSwiZXhwIjoxNTkwNDM1MDExfQ.4rfUPYnGC2HiiiRfQddetIyuX1J8_yxpA8gMM-4tQI4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "strapi",
+			"item": [
+				{
+					"name": "Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://64.225.126.33/Categories",
+							"protocol": "http",
+							"host": [
+								"64",
+								"225",
+								"126",
+								"33"
+							],
+							"path": [
+								"Categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://64.225.126.33/Products",
+							"protocol": "http",
+							"host": [
+								"64",
+								"225",
+								"126",
+								"33"
+							],
+							"path": [
+								"Products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"ProductThree\",\n\t\"description\": \"Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs\",\n\t\"categories\": {\n\t\t\"id\": 4\n\t\t}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://64.225.126.33/Products",
+							"protocol": "http",
+							"host": [
+								"64",
+								"225",
+								"126",
+								"33"
+							],
+							"path": [
+								"Products"
 							]
 						}
 					},
