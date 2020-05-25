@@ -1,4 +1,11 @@
+/*
+ * Created on Sun May 24 2020
+ *
+ * Author: Jose Chavarría
+ * Github: @josechavarriacr
+ */
 import mongoose from 'mongoose';
+import config from './env'
 
 const options = {
   useNewUrlParser: true,
@@ -15,13 +22,8 @@ const options = {
 class Connection {
   constructor() {
     try {
-      const url =
-        process.env.MONGODB_URI || `mongodb://localhost:27017/TestDB`;
-        // process.env.MONGODB_URI ||
-        // 'mongodb+srv://mercaditoUser:8fyETnGwivC1RQTb@cluster0-wxxtk.mongodb.net/mercaditocrdb?retryWrites=true&w=majority';
-      // eslint-disable-next-line no-console
       console.log('Establish new connection with the DB');
-      mongoose.connect(url, options);
+      mongoose.connect(config.mongodbUrl, options);
     } catch (error) {
       throw new Error(error);
     }

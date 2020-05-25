@@ -1,3 +1,9 @@
+/*
+ * Created on Sun May 24 2020
+ *
+ * Author: Jose Chavarría
+ * Github: @josechavarriacr
+ */
 import Controller from  './Controller';
 import CategoryService from  "./../services/CategoryService";
 import Category from  "./../models/Category";
