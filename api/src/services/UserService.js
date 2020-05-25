@@ -1,6 +1,14 @@
+/*
+ * Created on Sun May 24 2020
+ *
+ * Author: Jose Chavarría
+ * Github: @josechavarriacr
+ */
 import mongoose from 'mongoose';
 import User from '../models/User';
 import UploadImg from './UploadImg';
+import Token from './Token';
+import bcrypt from 'bcryptjs';
 const { mongo } = mongoose;
 const { ObjectId } = mongo;
 
@@ -28,11 +36,15 @@ class UserService {
     }
 
     try {
-      const items = await this.model.find(query).select('-password').skip(skip).limit(limit);
+      const items = await this.model
+        .find(query)
+        .select('-password')
+        .skip(skip)
+        .limit(limit);
       const total = await this.model.countDocuments();
 
       return {
-        error: false,
+        status: false,
         statusCode: 200,
         data: items,
         total,
@@ -45,11 +57,11 @@ class UserService {
   async findOne(id) {
     try {
       const _id = new ObjectId(id);
-      const item = await this.model.findOne({ _id }).select('-password');
+      const user = await this.model.findOne({ _id }).select('-password');
       return {
-        error: false,
+        status: false,
         statusCode: 200,
-        item,
+        data: user
       };
     } catch (error) {
       throw new Error(error);
@@ -58,12 +70,13 @@ class UserService {
 
   async create(data) {
     try {
-      const item = await this.model.create(data);
-      if (item)
+      const user = await this.model.create(data);
+      if (user)
         return {
-          error: false,
+          status: true,
           statusCode: 201,
-          item,
+          data: user,
+          token,
         };
     } catch (error) {
       throw new Error(error);
@@ -72,37 +85,37 @@ class UserService {
 
   isEmptyEmailAndPassword(params) {
     const { email, password } = params;
-    if (!email)
-      throw new Error('email is missing');
-    if (!password)
-      throw new Error('passwords is missing');
+    if (!email) throw new Error('email is missing');
+    if (!password) throw new Error('passwords is missing');
   }
 
   async signUp(data) {
     try {
-      const { Roles } = data;
       this.isEmptyEmailAndPassword(data);
-      const Preferences = {
-        img: '/home/img',
-        location: 'Yor currect location',
-      };
+      const { Roles } = data;
       if (!Roles) {
         data.Roles = {
           type: 'user', // user, owner, client
         };
       }
+      const Preferences = {
+        img: '/home/img',
+        location: 'Yor currect location',
+      };
       data.username = data.email;
       const newUser = {
         ...data,
         Preferences,
       };
       const user = await this.model.create(newUser);
+      const token = Token.getNew(user);
       if (user) {
         user.password = undefined;
         return {
-          error: false,
+          status: true,
           statusCode: 201,
           user,
+          token,
         };
       }
     } catch (error) {
@@ -110,40 +123,34 @@ class UserService {
     }
   }
 
-  async findByEmail(params) {
-    const { email } = params
-    try {
-      if(!email) throw new Error('email is missing');
-      const user = await this.findAll({email});
-      const { data } = user;
-      return {
-        error: false,
-        statusCode: 200,
-        email: data[0].email,
-      };
-    } catch (error) {
-      throw new Error(error);
-    }
-  }
   async signIn(params) {
     try {
       this.isEmptyEmailAndPassword(params);
       const { email, password } = params;
-      const user = await this.findAll({email, password});
-      const { data } = user;
-      if (data.length > 0) {
+      const user = await this.model.findOne({ email });
+      if (!user) {
         return {
-          error: false,
-          statusCode: 200,
-          user: data[0],
-        };
-      } else {
-        return {
-          error: true,
+          status: false,
           statusCode: 404,
           message: 'User not found',
         };
       }
+      const match = await bcrypt.compare(password, user.password);
+
+      if (!match) {
+        return {
+          status: false,
+          statusCode: 401,
+          message: 'Invalid email and passdword combination',
+        };
+      }
+
+      const token = Token.getNew(user);
+      return {
+        status: true,
+        statusCode: 200,
+        token,
+      };
     } catch (error) {
       throw new Error(error);
     }
@@ -152,19 +159,17 @@ class UserService {
     try {
       const data = req.body;
       const img = await this.img.sendAvatar(req.files);
-      const Preferences = { img }
-      data.Preferences = Preferences
+      const Preferences = { img };
+      data.Preferences = Preferences;
       const opt = {
         new: true,
-        upsert: true
-      } 
+        upsert: true,
+      };
       const user = await this.model.findByIdAndUpdate(id, data, opt);
-      console.log('user', data);
-      
       return {
-        error: false,
+        status: true,
         statusCode: 202,
-        data: user
+        data: user,
       };
     } catch (error) {
       throw new Error(error);
@@ -176,7 +181,7 @@ class UserService {
       let item = await this.model.findByIdAndDelete(id);
       if (!item)
         return {
-          error: true,
+          status: false,
           statusCode: 404,
           message: 'item not found',
         };
@@ -195,13 +200,13 @@ class UserService {
       }
 
       return {
-        error: false,
+        status: true,
         deleted: true,
         statusCode: 202,
         item,
       };
     } catch (error) {
-      throw new Error(errors);
+      throw new Error(error);
     }
   }
 }

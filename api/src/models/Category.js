@@ -1,5 +1,11 @@
-import mongoose, { Schema } from "mongoose";
-import uniqueValidator from "mongoose-unique-validator";
+/*
+ * Created on Sun May 24 2020
+ *
+ * Author: Jose Chavarría
+ * Github: @josechavarriacr
+ */
+import mongoose, { Schema } from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
 
 const dto = {
   name: {
@@ -19,7 +25,7 @@ class Category {
   initSchema() {
     const schema = new Schema(dto, { timestamps: true });
     schema.pre(
-      "save",
+      'save',
       function (next) {
         console.log(next); 
         return next();
@@ -30,12 +36,14 @@ class Category {
       }
     );
     schema.plugin(uniqueValidator);
-    mongoose.model("categories", schema);
+    mongoose.model('categories', schema);
   }
 
   getInstance() {
-    this.initSchema();
-    return mongoose.model("categories");
+    if (!mongoose.connection.models['categories']) {
+      this.initSchema();
+    }
+    return mongoose.model('categories');
   }
 }
 export default Category;

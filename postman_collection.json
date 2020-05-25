@@ -208,7 +208,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/users",
+							"raw": "http://localhost:5000/api/users?name=rafa",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -221,8 +221,7 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "rafa",
-									"disabled": true
+									"value": "rafa"
 								}
 							]
 						}
@@ -290,6 +289,99 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"ProductThree\",\n\t\"description\": \"Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs\",\n\t\"categories\": {\n\t\t\"id\": 4\n\t\t}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://64.225.126.33/Products",
+							"protocol": "http",
+							"host": [
+								"64",
+								"225",
+								"126",
+								"33"
+							],
+							"path": [
+								"Products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://64.225.126.33/Products",
+							"protocol": "http",
+							"host": [
+								"64",
+								"225",
+								"126",
+								"33"
+							],
+							"path": [
+								"Products"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "SignIn User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"j4r@gmail.com\",\r\n    \"password\": \"j4r\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/public/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"public",
+								"signin"
+							]
+						}
+					},
+					"response": []
 				},
 				{
 					"name": "SignUp User",
@@ -298,7 +390,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email5@gmail.com\",\r\n    \"password\": \"773yhRE{\"\r\n}",
+							"raw": "{\r\n    \"email\": \"j4r@gmail.com\",\r\n    \"password\": \"j4r\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -306,7 +398,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/users/signup",
+							"raw": "http://localhost:5000/api/public/signup",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -314,38 +406,8 @@
 							"port": "5000",
 							"path": [
 								"api",
-								"users",
+								"public",
 								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "SignIn User",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email3@gmail.com\",\r\n    \"password\": \"773yhRE{\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:5000/api/users/signin",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"users",
-								"signin"
 							]
 						}
 					},
@@ -366,7 +428,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/users/verifyEmail",
+							"raw": "http://localhost:5000/api/public/verifyEmail",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -374,7 +436,7 @@
 							"port": "5000",
 							"path": [
 								"api",
-								"users",
+								"public",
 								"verifyEmail"
 							]
 						}
