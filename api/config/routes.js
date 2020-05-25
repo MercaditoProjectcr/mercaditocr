@@ -9,14 +9,25 @@ import routerPost from '../src/routes/posts.route';
 import routerUser from '../src/routes/users.route';
 import routerPublic from '../src/routes/public.route';
 import getErrors from '../src/middlewares/error-handle';
+import verifyToken from '../src/middlewares/verify-token';
+const { isToken } = verifyToken;
 const router = Router();
 
 // api
 router.get('/', (req, res) => {
   res.status(200).send({
     message: 'conected!',
+    req
   });
 });
+
+// api/test
+router.use('/test', isToken, (req, res, next) => {
+  res.status(200).send({
+    status: true,
+    message: 'helloooo',
+  })
+})
 
 // api/posts
 router.use('/posts', routerPost);

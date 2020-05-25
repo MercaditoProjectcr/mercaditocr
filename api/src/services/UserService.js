@@ -57,11 +57,11 @@ class UserService {
   async findOne(id) {
     try {
       const _id = new ObjectId(id);
-      const item = await this.model.findOne({ _id }).select('-password');
+      const user = await this.model.findOne({ _id }).select('-password');
       return {
         status: false,
         statusCode: 200,
-        item,
+        data: user
       };
     } catch (error) {
       throw new Error(error);
@@ -70,12 +70,12 @@ class UserService {
 
   async create(data) {
     try {
-      const item = await this.model.create(data);
-      if (item)
+      const user = await this.model.create(data);
+      if (user)
         return {
           status: true,
           statusCode: 201,
-          item,
+          data: user,
           token,
         };
     } catch (error) {
@@ -166,8 +166,6 @@ class UserService {
         upsert: true,
       };
       const user = await this.model.findByIdAndUpdate(id, data, opt);
-      console.log('user', data);
-
       return {
         status: true,
         statusCode: 202,
@@ -208,7 +206,7 @@ class UserService {
         item,
       };
     } catch (error) {
-      throw new Error(errors);
+      throw new Error(error);
     }
   }
 }

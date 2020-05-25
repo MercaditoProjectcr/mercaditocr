@@ -5,34 +5,39 @@
  * Github: @josechavarriacr
  */
 
-import Token from "../services/Token";
-import UserController from "../controllers/UserController";
-const { findOne } = UserController;
+/*
+ * Created on Sun May 24 2020
+ *
+ * Author: Jose Chavarría
+ * Github: @josechavarriacr
+ */
+import Token from '../services/Token';
+import UserService from './../services/UserService';
 
- async function protect(req, res, next) {
-    const bearer = req.headers.authorization
-  
-    if (!bearer || !bearer.startsWith('Bearer ')) {
-      return res.status(401).end()
-    }
-  
-    const token = bearer.split('Bearer ')[1].trim()
-    let payload
+class VerifyToken {
+  constructor() {
+    this.service = new UserService();
+    this.isToken = this.isToken.bind(this)
+   }
+  async isToken(req, res, next) {
     try {
-      payload = await Token.verify(token)
-    } catch (e) {
-      return res.status(401).end()
+      const bearer = req.headers.authorization;
+      if (!bearer || !bearer.startsWith('Bearer ')) {
+        return res.status(401).send({
+          status: false,
+          message: 'Bearer is missing',
+        });
+      }
+      const token = bearer.split('Bearer ')[1].trim();
+      const payload = await Token.verify(token);
+      const user = await this.service.findOne(payload.id);
+      const { data } = user
+      req.user = data;
+      next();
+    } catch (error) {
+      throw new Error(error);
     }
-  
-    const user = await findOne(payload.id)
-      .select('-password')
-      .lean()
-      .exec()
-  
-    if (!user) {
-      return res.status(401).end()
-    }
-  
-    req.user = user
-    next()
   }
+}
+
+export default new VerifyToken;

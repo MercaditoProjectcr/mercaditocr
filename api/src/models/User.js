@@ -1,9 +1,3 @@
-/*
- * Created on Sun May 24 2020
- *
- * Author: Jose Chavarría
- * Github: @josechavarriacr
- */
 import mongoose, { Schema } from 'mongoose';
 import uniqueValidator from 'mongoose-unique-validator';
 import bcrypt from 'bcryptjs';
@@ -80,7 +74,9 @@ class User {
   }
 
   getInstance() {
-    this.initSchema();
+    if (!mongoose.connection.models['users']) {
+      this.initSchema();
+    }
     return mongoose.model('users');
   }
 }

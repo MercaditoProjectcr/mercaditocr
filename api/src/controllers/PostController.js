@@ -23,7 +23,7 @@ class PostController extends Controller {
         data,
       });
     } catch (error) {
-      next(error);
+      next(error.message);
     }
   }
 }
