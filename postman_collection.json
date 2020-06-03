@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8303ba94-6cf4-4c65-8c28-f90eef0a7382",
+		"_postman_id": "8f35ab0f-d6e3-48b2-85ed-58f0f51e4681",
 		"name": "Mercaditocr",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -173,7 +173,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZDgxODUwYzdiZTAzMWI0ODNiNjAwNSIsImlhdCI6MTU5MTIyMDMyMiwiZXhwIjoxNTkxMzA2NzIyfQ.TRl_qp4imrnNSNG6DSHCwO2BI6yPQ98OiogucraKKsc",
 								"type": "text"
 							}
 						],
@@ -187,7 +187,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/users/5ec9f08e3244ff09bc9139fd",
+							"raw": "http://localhost:5000/api/users/5ecb186a41bfbc62f4b36c2a",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -196,7 +196,7 @@
 							"path": [
 								"api",
 								"users",
-								"5ec9f08e3244ff09bc9139fd"
+								"5ecb186a41bfbc62f4b36c2a"
 							]
 						}
 					},
@@ -209,7 +209,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYzlmMDhlMzI0NGZmMDliYzkxMzlmZCIsImlhdCI6MTU5MDM0ODYxMSwiZXhwIjoxNTkwNDM1MDExfQ.4rfUPYnGC2HiiiRfQddetIyuX1J8_yxpA8gMM-4tQI4",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZDgxODUwYzdiZTAzMWI0ODNiNjAwNSIsImlhdCI6MTU5MTIyMDMyMiwiZXhwIjoxNTkxMzA2NzIyfQ.TRl_qp4imrnNSNG6DSHCwO2BI6yPQ98OiogucraKKsc",
 								"type": "text"
 							}
 						],
@@ -404,7 +404,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYzlmMDhlMzI0NGZmMDliYzkxMzlmZCIsImlhdCI6MTU5MDM0ODYxMSwiZXhwIjoxNTkwNDM1MDExfQ.4rfUPYnGC2HiiiRfQddetIyuX1J8_yxpA8gMM-4tQI4",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZDgxODUwYzdiZTAzMWI0ODNiNjAwNSIsImlhdCI6MTU5MTIyMDMyMiwiZXhwIjoxNTkxMzA2NzIyfQ.TRl_qp4imrnNSNG6DSHCwO2BI6yPQ98OiogucraKKsc",
 								"type": "text"
 							}
 						],
