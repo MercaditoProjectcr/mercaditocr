@@ -35,7 +35,7 @@ class VerifyToken {
       req.user = data;
       next();
     } catch (error) {
-      throw new Error(error);
+      next(error);
     }
   }
 }

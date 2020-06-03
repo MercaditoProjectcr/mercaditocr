@@ -33,7 +33,7 @@ router.use('/test', isToken, (req, res, next) => {
 router.use('/posts', routerPost);
 
 // api/users
-router.use('/users', routerUser);
+router.use('/users', isToken, routerUser);
 
 // api/public
 router.use('/public', routerPublic)

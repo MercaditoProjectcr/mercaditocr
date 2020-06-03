@@ -12,9 +12,6 @@ const routerPublic = Router();
 
 routerPublic.route('/signup')
 .post(singUp)
-// .post((req, res, next) => {
-//     res.status(200).send('hello')
-// })
 
 routerPublic.route('/signin')
 .post(singIn)
