@@ -146,9 +146,11 @@ class UserService {
       }
 
       const token = Token.getNew(user);
+      user.password = undefined;
       return {
         status: true,
         statusCode: 200,
+        user,
         token,
       };
     } catch (error) {
