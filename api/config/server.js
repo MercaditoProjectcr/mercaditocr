@@ -1,3 +1,9 @@
+/*
+ * Created on Wed Jun 03 2020
+ *
+ * Author: Jose Chavarría
+ * Github: @josechavarriacr
+ */
 import express from 'express';
 import bodyParser, { urlencoded } from 'body-parser';
 import cors from 'cors';
@@ -12,12 +18,6 @@ export const app = express();
 const accessLogStream = fs.createWriteStream(path.resolve(__dirname , '../access.log'), { flags: 'a' })
 // setup the logger
 app.use(morgan('combined', { stream: accessLogStream }))
-/*
- * Created on Sun May 24 2020
- *
- * Author: Jose Chavarría
- * Github: @josechavarriacr
- */
 app.use(morgan('dev'))
 
 // enable files upload
