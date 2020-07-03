@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8f35ab0f-d6e3-48b2-85ed-58f0f51e4681",
+		"_postman_id": "b5a371d3-29d4-4bb5-ac68-722556de04fe",
 		"name": "Mercaditocr",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -17,13 +17,8 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "token",
-								"value": "",
-								"type": "text"
-							},
-							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYzlmMDhlMzI0NGZmMDliYzkxMzlmZCIsImlhdCI6MTU5MDM0ODYxMSwiZXhwIjoxNTkwNDM1MDExfQ.4rfUPYnGC2HiiiRfQddetIyuX1J8_yxpA8gMM-4tQI4",
+								"value": "{{token}}",
 								"type": "text"
 							}
 						],
@@ -55,7 +50,13 @@
 					"name": "FindOne Test",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:5000/api/posts/5e8907d0aa907d3cd82c7eb1",
 							"protocol": "http",
@@ -67,6 +68,13 @@
 								"api",
 								"posts",
 								"5e8907d0aa907d3cd82c7eb1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -76,7 +84,13 @@
 					"name": "Update Test",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"title\": \"post 1\",\r\n    \"subtitle\": \"subtitle post 1\",\r\n    \"content\": \"content post 1\",\r\n    \"contacts\": {\r\n    \t\"name\": \"Rafa\",\r\n    \t\"num\": 84825602\r\n    }\r\n}",
@@ -106,7 +120,13 @@
 					"name": "Delete Test",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:5000/api/posts/1",
 							"protocol": "http",
@@ -127,7 +147,13 @@
 					"name": "Create Test",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"title\": \"post 1\",\r\n    \"subtitle\": \"subtitle post 1\",\r\n    \"content\": \"content post 1\",\r\n    \"contacts\": {\r\n    \t\"name\": \"jose\",\r\n    \t\"num\": 84825602\r\n    }\r\n}",
@@ -156,10 +182,10 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Users",
+			"name": "Categories",
 			"item": [
 				{
-					"name": "findOne User",
+					"name": "FindAll",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -173,7 +199,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZDgxODUwYzdiZTAzMWI0ODNiNjAwNSIsImlhdCI6MTU5MTIyMDMyMiwiZXhwIjoxNTkxMzA2NzIyfQ.TRl_qp4imrnNSNG6DSHCwO2BI6yPQ98OiogucraKKsc",
+								"value": "{{token}}",
 								"type": "text"
 							}
 						],
@@ -187,7 +213,356 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/users/5ecb186a41bfbc62f4b36c2a",
+							"raw": "http://localhost:5000/api/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindOne",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/categories/5efe3febafad5129b0ae1ab1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"categories",
+								"5efe3febafad5129b0ae1ab1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"name\": \"Category Twou\",\r\n    \"SubCategories\": [\r\n       {\r\n\t\t\"name\": \"Sub Category one\"\r\n\t\t},\r\n        {\r\n\t\t\"name\": \"Sub Category two\"\r\n\t\t},\r\n        {\r\n\t\t\"name\": \"Sub Category three\"\r\n\t\t}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/categories/5efe3cd560438226bea117e8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"categories",
+								"5efe3cd560438226bea117e8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/categories/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Category one\",\r\n\t\"SubCategories\": [\r\n\t\t{\r\n\t\t\t\"name\": \"test one\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"test two\"\r\n\t\t}\r\n\t]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "FindAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"asd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindOne",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/products/5efef10a8daa984df50fe84f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"5efef10a8daa984df50fe84f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"name\": \"Category Twou\",\r\n    \"SubCategories\": [\r\n       {\r\n\t\t\"name\": \"Sub Category one\"\r\n\t\t},\r\n        {\r\n\t\t\"name\": \"Sub Category two\"\r\n\t\t},\r\n        {\r\n\t\t\"name\": \"Sub Category three\"\r\n\t\t}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/products/5efe3cd560438226bea117e8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"5efe3cd560438226bea117e8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/products/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Product One\",\r\n\t\"description\": \"Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs\",\r\n\t\"options\": {\r\n\t\t\"express\": true,\r\n\t\t\"paymentTerminal\": true,\r\n\t\t\"paymentOnline\": true\r\n\t},\r\n\t\"images\": [\r\n\t\t{\r\n\t\t\t\"url\": \"https://cdn.pocket-lint.com/r/s/970x/assets/images/152137-laptops-review-apple-macbook-pro-2020-review-image1-pbzm4ejvvs-jpg.webp\"\r\n\t\t}\r\n\t],\r\n\t\"contacts\": {\r\n\t\t\"facbook\": \"facebook.com\",\r\n\t\t\"instagram\": \"instagram.com\",\r\n\t\t\"twitter\": \"twitter.com\",\r\n\t\t\"linkedin\": \"linkedin.com\",\r\n\t\t\"whatsapp\": 8008000,\r\n\t\t\"website\": \"google.com\"\r\n\t},\r\n\t\"owner\": \"5efe21bd60438226bea117e5\",\r\n\t\"subcategories\": [\r\n\t\t\"5efeee5e313b174d17f58d90\",\r\n        \"5efeee5e313b174d17f58d91\"\r\n\t]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "findOne User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"asd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users/5efe21bd60438226bea117e5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -196,7 +571,7 @@
 							"path": [
 								"api",
 								"users",
-								"5ecb186a41bfbc62f4b36c2a"
+								"5efe21bd60438226bea117e5"
 							]
 						}
 					},
@@ -209,12 +584,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZDgxODUwYzdiZTAzMWI0ODNiNjAwNSIsImlhdCI6MTU5MTIyMDMyMiwiZXhwIjoxNTkxMzA2NzIyfQ.TRl_qp4imrnNSNG6DSHCwO2BI6yPQ98OiogucraKKsc",
+								"value": "{{token}}",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/users?name=rafa",
+							"raw": "http://localhost:5000/api/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -227,7 +602,8 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "rafa"
+									"value": "rafa",
+									"disabled": true
 								}
 							]
 						}
@@ -238,7 +614,13 @@
 					"name": "Update User",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -279,7 +661,13 @@
 					"name": "Delete User",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:5000/api/users/5e895253d972ee56a85ad853",
 							"protocol": "http",
@@ -300,15 +688,10 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Products",
-			"item": [],
-			"protocolProfileBehavior": {}
-		},
-		{
 			"name": "Public",
 			"item": [
 				{
-					"name": "SignIn User",
+					"name": "SignIn",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -338,7 +721,7 @@
 					"response": []
 				},
 				{
-					"name": "SignUp User",
+					"name": "SignUp",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -368,7 +751,7 @@
 					"response": []
 				},
 				{
-					"name": "verify Email User",
+					"name": "verify Email",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -503,6 +886,35 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d31acc03-f3f0-41cb-8bfb-ab8d3838401a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "0c75e41e-53e9-40b6-856b-a024d54f09a8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "00238556-6a81-46c2-befa-8dcb024c4f30",
+			"key": "token",
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZmUyMWJkNjA0MzgyMjZiZWExMTdlNSIsImlhdCI6MTU5MzcxMzA4NSwiZXhwIjoxNjI1MjQ5MDg1fQ.kew_FwHWE5tHz4Bqd2b0aibAzvawCBcDg6U3bxwPq1Y"
 		}
 	],
 	"protocolProfileBehavior": {}

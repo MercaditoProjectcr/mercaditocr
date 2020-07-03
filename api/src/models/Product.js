@@ -68,16 +68,12 @@ const dto = {
       type: Schema.Types.ObjectId, 
       ref: 'users' 
     },
-    tags: [
+    subcategories: [
       {
         type: Schema.Types.ObjectId, 
+        ref: 'subcategories' 
       }
     ]
-
-  // tags: {
-  //   type: Schema.Types.ObjectId, 
-  //   ref: 'categories'
-  // }
 };
 
 class Product {

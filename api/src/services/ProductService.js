@@ -7,7 +7,6 @@
 import Service from './Service';
 import mongoose from 'mongoose';
 
-// import Category from '../models/Category';
 const { mongo } = mongoose;
 const { ObjectId } = mongo;
 
@@ -15,25 +14,17 @@ const { ObjectId } = mongo;
 class ProductService extends Service {
   constructor(model) {
     super(model);
-    // this.category = new Category().getInstance();
   }
   async findOne(id) {
     try {
       const _id = new ObjectId(id)
       const item = await this.model.findOne({_id})
-      // let categories
-      // // .populate('owner')
-      // if(item.tags.length) {
-      //   categories = await this.category.find()
-      //   const aux = categories.SubCategories.map(value => {
-      //   })
-      //   // .where('_id').in(item.tags)
-      // }
+      .populate('owner', ['-password', '-Roles'])
+      .populate('subcategories', ['id', 'name'])
     return {
       status: true,
       statusCode: 200,
-      item,
-      categories
+      item
     };
     } catch (error) {
       throw new Error(error);
