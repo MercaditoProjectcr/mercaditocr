@@ -12,22 +12,8 @@ const dto = {
     type: String,
     required: true,
   },
-  // SubCategories: [
-  //   {
-  //     name: {
-  //       type: String,
-  //       required: true,
-  //     }
-  //   }
-  // ]
-  SubCategories: [
-   {
-    type: Schema.Types.ObjectId, 
-    ref: 'categories'
-   }
-  ]
 };
-class Category {
+class SubCategory {
   initSchema() {
     const schema = new Schema(dto, { timestamps: true });
     schema.pre(
@@ -42,14 +28,14 @@ class Category {
       }
     );
     schema.plugin(uniqueValidator);
-    mongoose.model('categories', schema);
+    mongoose.model('subcategories', schema);
   }
 
   getInstance() {
-    if (!mongoose.connection.models['categories']) {
+    if (!mongoose.connection.models['subcategories']) {
       this.initSchema();
     }
-    return mongoose.model('categories');
+    return mongoose.model('subcategories');
   }
 }
-export default Category;
+export default SubCategory;
