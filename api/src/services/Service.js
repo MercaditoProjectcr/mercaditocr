@@ -1,10 +1,10 @@
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarría
+ * Author: Jose Chavarrï¿½a
  * Github: @josechavarriacr
  */
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 const { mongo } = mongoose;
 const { ObjectId } = mongo;
 
@@ -31,7 +31,7 @@ class Service {
       try {
         query._id = new ObjectId(query._id);
       } catch (error) {
-        console.log("not able to generate mongoose id with content", query._id);
+        console.log('not able to generate mongoose id with content', query._id);
       }
     }
 
@@ -40,7 +40,7 @@ class Service {
         .find(query)
         .skip(skip)
         .limit(limit);
-      const total = await this.model.count();
+      const total = await this.model.countDocuments();
 
       return {
         status: true,
@@ -100,19 +100,19 @@ class Service {
         return {
           status: false,
           statusCode: 404,
-          message: "item not found"
+          message: 'item not found'
         };
 
-      console.log("removed item", item);
+      console.log('removed item', item);
 
       if (item.path) {
-        console.log("unlink item", item.path);
+        console.log('unlink item', item.path);
         fs.unlink(item.path, function(err) {
           if (err) {
-            console.log("error deleting file");
+            console.log('error deleting file');
             throw err;
           }
-          console.log("File deleted!");
+          console.log('File deleted!');
         });
       }
 

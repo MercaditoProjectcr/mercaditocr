@@ -50,13 +50,11 @@ const dto = {
     },
   },
 };
-const options = {
-  versionKey: false,
-};
+
 
 class User {
   initSchema() {
-    const schema = new Schema(dto, options, { timestamps: true });
+    const schema = new Schema(dto, { timestamps: true });
     schema.pre('save', function (next) {
       if (!this.isModified('password')) {
         return next();

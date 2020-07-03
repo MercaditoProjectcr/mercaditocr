@@ -1,7 +1,7 @@
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarría
+ * Author: Jose Chavarrï¿½a
  * Github: @josechavarriacr
  */
 import Controller from  './Controller';
@@ -13,7 +13,6 @@ const categoryService = new CategoryService(
 );
 
 class CategoryController extends Controller {
-
   constructor(service) {
     super(service);
   }

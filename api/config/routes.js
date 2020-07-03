@@ -1,7 +1,7 @@
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarría
+ * Author: Jose Chavarrï¿½a
  * Github: @josechavarriacr
  */
 import { Router } from 'express';
@@ -10,6 +10,8 @@ import routerUser from '../src/routes/users.route';
 import routerPublic from '../src/routes/public.route';
 import getErrors from '../src/middlewares/error-handle';
 import verifyToken from '../src/middlewares/verify-token';
+import routerCategory from '../src/routes/categories.route';
+import routerProduct from '../src/routes/products.route';
 const { isToken } = verifyToken;
 const router = Router();
 
@@ -34,6 +36,12 @@ router.use('/posts', routerPost);
 
 // api/users
 router.use('/users', isToken, routerUser);
+
+// api/categories
+router.use('/categories', isToken, routerCategory);
+
+// api/products
+router.use('/products', isToken, routerProduct)
 
 // api/public
 router.use('/public', routerPublic)
