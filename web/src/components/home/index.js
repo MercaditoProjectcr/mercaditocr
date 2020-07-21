@@ -1,10 +1,16 @@
 import React from "react";
-
+import Welcome from './welcome'
+import Features from './features'
+import Team from './succesTeam'
+import './home.style.css'
 const Home = () => {
   return (
-    <div>
-      <h1>Hello from Home</h1>
-    </div>
+    <>
+      <Welcome />
+      <Features/>
+      <Team />
+
+    </>
   );
 };
 export default Home;
