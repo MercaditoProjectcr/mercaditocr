@@ -1,0 +1,62 @@
+// primary color #3F51B5
+
+.profileImgContainer{
+    width: 120px;
+    min-height: 120px;
+    max-height: auto; 
+    margin: auto;
+}
+.profileImg{
+    max-width: 100%;
+    height: auto;
+}
+.profileInfoContainer{
+    text-align: left;
+    padding-left: 15px;
+}
+
+//CSS breakpoints recomended in https://getflywheel.com/layout/css-breakpoints-responsive-design-how-to/,  for the most common devices
+
+@media all and (max-width: 640px) {
+.MuiGrid-spacing-xs-1 {
+    flex-flow: column;
+}
+.makeStyles-content-3 {
+    padding: 0px !important;
+    padding-top: 10px !important;
+}
+.MuiContainer-root {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.profileImg{
+    max-width: 100%;
+    height: auto;
+}
+}
+
+@media all and (max-width: 768px){
+.makeStyles-content-3 {
+    padding: 0px !important;
+    padding-top: 10px !important;
+}
+.MuiContainer-root {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.profileImg{
+  width: 30vw;
+}
+}
+ 
+@media all and (max-width: 1024px){
+ .MuiGrid-spacing-xs-1 {
+    flex-flow: row;
+}
+}
+ 
+@media all and (max-width: 1200px){
+ .MuiGrid-spacing-xs-1 {
+    flex-flow: row;
+}
+}

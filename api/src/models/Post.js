@@ -1,5 +1,11 @@
-import mongoose, { Schema } from "mongoose";
-import uniqueValidator from "mongoose-unique-validator";
+/*
+ * Created on Sun May 24 2020
+ *
+ * Author: Jose Chavarría
+ * Github: @josechavarriacr
+ */
+import mongoose, { Schema } from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
 import slugify from 'slugify';
 
 const dto = {
@@ -36,13 +42,13 @@ class Post {
   initSchema() {
     const schema = new Schema(dto, { timestamps: true });
     schema.pre(
-      "save",
+      'save',
       function(next) {
         let post = this;
-        if (!post.isModified("title")) {
+        if (!post.isModified('title')) {
           return next();
         }
-        post.slug = slugify(post.title, "_");
+        post.slug = slugify(post.title, '_');
         console.log('set slug', post.slug);
         return next();
       },
@@ -51,12 +57,14 @@ class Post {
       }
     );
     schema.plugin(uniqueValidator);
-    mongoose.model("posts", schema);
+    mongoose.model('post', schema);
   }
 
   getInstance() {
-    this.initSchema();
-    return mongoose.model("posts");
+    if (!mongoose.connection.models['post']) {
+      this.initSchema();
+    }
+    return mongoose.model('post');
   }
 }
 
