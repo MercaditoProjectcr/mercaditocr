@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API = 'http://localhost:5000/api';
+const API = 'http://container_api:5000/api';
 const token = window.localStorage.getItem('__edus_token__');
 const headers = { 
     'content-type': 'application/json',
