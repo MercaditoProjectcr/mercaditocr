@@ -1,24 +1,25 @@
-import mongoose, { Schema } from "mongoose";
-import uniqueValidator from "mongoose-unique-validator";
+import mongoose, { Schema } from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
+import bcrypt from 'bcryptjs';
 
 const dto = {
   name: {
     type: String,
-    required: true,
+    required: false,
   },
   lastName: {
     type: String,
-    required: true,
+    required: false,
   },
   email: {
     type: String,
-    required: true,
-    unique: true
+    required: true, // TODO change to true
+    unique: true, // TODO change to true
   },
   username: {
     type: String,
-    required: true,
-    unique: true
+    required: true, // TODO change to true
+    unique: true, // TODO change to true
   },
   password: {
     type: String,
@@ -30,44 +31,50 @@ const dto = {
   },
   token: {
     type: String,
-    required: false
+    required: false,
   },
   Roles: {
     type: {
       type: String, // admin, owner and client
-      required: false
+      required: false,
     },
   },
   Preferences: {
     img: {
       type: String,
-      required: false
+      required: false,
     },
-    location:{
+    location: {
       type: String,
-      required: false
-    }
-  }
-}
-class User {
+      required: false,
+    },
+  },
+};
 
+
+class User {
   initSchema() {
     const schema = new Schema(dto, { timestamps: true });
-    schema.pre(
-      "save",
-      function(next) {        
+    schema.pre('save', function (next) {
+      if (!this.isModified('password')) {
         return next();
-      },
-      function(err) {
-        next(err);
       }
-    );
+      bcrypt.hash(this.password, 8, (err, hash) => {
+        if (err) {
+          return next(err);
+        }
+        this.password = hash;
+        next();
+      });
+    });
     schema.plugin(uniqueValidator);
     mongoose.model('users', schema);
   }
 
   getInstance() {
-    this.initSchema();
+    if (!mongoose.connection.models['users']) {
+      this.initSchema();
+    }
     return mongoose.model('users');
   }
 }

@@ -1,17 +1,32 @@
-import mongoose from "mongoose";
+/*
+ * Created on Sun May 24 2020
+ *
+ * Author: Jose Chavarría
+ * Github: @josechavarriacr
+ */
+import mongoose from 'mongoose';
+import config from './env'
+
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  autoIndex: false,
+  poolSize: 10,
+  serverSelectionTimeoutMS: 5000,
+  socketTimeoutMS: 45000,
+  family: 4,
+};
 
 class Connection {
   constructor() {
-    const url =
-      // process.env.MONGODB_URI || `mongodb://localhost:27017/TestDB`;
-      process.env.MONGODB_URI || `mongodb+srv://mercaditoUser:8fyETnGwivC1RQTb@cluster0-wxxtk.mongodb.net/mercaditocrdb?retryWrites=true&w=majority`;
-    console.log("Establish new connection with the DB");
-    mongoose.Promise = global.Promise;
-    mongoose.set("useNewUrlParser", true);
-    mongoose.set("useFindAndModify", false);
-    mongoose.set("useCreateIndex", true);
-    mongoose.set("useUnifiedTopology", true);
-    mongoose.connect(url);
+    try {
+      console.log('Establish new connection with the DB');
+      mongoose.connect(config.mongodbUrl, options);
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 }
 

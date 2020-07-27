@@ -3,7 +3,7 @@ import ListUsers from '../components/User/List';
 
 function Users() {
   return (
-    <div className="App">
+    <div>
      <ListUsers />
     </div>
   );
