@@ -1,8 +1,8 @@
 version: '3.7'
 services:
-  #########################
-  ## SETUP DB CONTAINER
-  #########################
+  ########################
+  # SETUP DB CONTAINER
+  ########################
   mongodb:
     container_name: container_mongodb
     image: mongo:latest
@@ -17,9 +17,9 @@ services:
       - storage_v1:/data/db
     networks:
       - network
-  #########################
-  ## SETUP API CONTAINER
-  #########################
+  # #######################
+  # SETUP API CONTAINER
+  # #######################
   api:
     build:
       context: ./api
@@ -35,25 +35,20 @@ services:
       - network
     command: yarn dev
     restart: always
-  #########################
-  ## SETUP WEB CONTAINER
-  #########################
+  ########################
+  # SETUP WEB CONTAINER
+  ########################
   web:
-    stdin_open: true
+    container_name: container_web
     build:
       context: ./web
-      dockerfile: Dockerfile.dev
-    container_name: container_web
-    volumes:
-      - ./web/:/usr/src/app
-    links:
-      - api
+      dockerfile: Dockerfile
+    # links:
+    #   - api
     ports:
-      - "3000:3000"
+      - "80:80"
     networks:
       - network
-    command: ./node_modules/.bin/react-scripts start
-    restart: always
 
 networks:
     network:
