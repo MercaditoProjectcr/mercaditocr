@@ -1,7 +1,7 @@
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarr�a
+ * Author: Jose Chavarría
  * Github: @josechavarriacr
  */
 import './config/database';
