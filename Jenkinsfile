@@ -4,7 +4,7 @@ node {
         checkout scm
       }
       stage('Pulling...') {
-        sh 'git pull -f'
+        sh 'git pull origin develop -f'
       }
       stage('Build Docker image') {
         sh 'docker-compose build --no-cache'
