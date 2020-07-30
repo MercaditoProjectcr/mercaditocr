@@ -1,4 +1,2 @@
 # mercaditocr  
-:D   
 
-eqnlkq
