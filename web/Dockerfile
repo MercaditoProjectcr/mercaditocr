@@ -1,10 +1,10 @@
 # build environment
-FROM node:13.12.0-alpine as build
+FROM node:10.16-alpine as build
 WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY package.json ./
-RUN yarn install
-RUN yarn add react-scripts@3.4.1 -g
+RUN yarn install --silent
+RUN yarn add react-scripts@3.4.1 -g --silent
 COPY . ./
 RUN yarn build
 
