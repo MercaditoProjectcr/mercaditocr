@@ -12,7 +12,7 @@ node {
         sh 'printenv'
       }
       stage('Build Docker image') {
-        sh 'docker-compose build'
+        sh 'docker-compose build --no-cache'
       }
       stage('Deployment...') {
         sh 'docker-compose up -d'
