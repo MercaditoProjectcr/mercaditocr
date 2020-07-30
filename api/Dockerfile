@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 # Install Dependencies
 COPY package*.json ./
 
-RUN yarn install --silent
+RUN yarn install
 
 # Copy app source code
 COPY . .
