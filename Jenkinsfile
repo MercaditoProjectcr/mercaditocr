@@ -2,7 +2,7 @@ node {
    try {   
      stage('Checkout') {
         sh 'git reset --hard'
-        sh 'git pull develop -f'
+        sh 'git pull origin develop -f'
       }
       stage('Environment') {
         sh 'git --version'
