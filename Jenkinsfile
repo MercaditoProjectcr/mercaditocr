@@ -1,7 +1,7 @@
 node {
    try {   
      stage('Checkout') {
-        sh 'git pull origin develop -f'
+        sh 'git pull -f'
       }
       stage('Environment') {
         sh 'git --version'
