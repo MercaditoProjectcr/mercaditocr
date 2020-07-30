@@ -12,7 +12,6 @@
 /build
 
 # source control 
-src/**/*.css 
 
 # misc
 .DS_Store
