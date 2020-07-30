@@ -1,14 +1,10 @@
 node {
    try {   
      stage('Checkout') {
-        sh 'git pull -f'
+        checkout scm
       }
-      stage('Environment') {
-        sh 'git --version'
-        echo "Branch: ${env.BRANCH_NAME}"
-        sh 'docker -v'
-        sh 'docker-compose -v'
-        sh 'printenv'
+      stage('Pulling...') {
+        sh 'git pull -f'
       }
       stage('Build Docker image') {
         sh 'docker-compose build --no-cache'
