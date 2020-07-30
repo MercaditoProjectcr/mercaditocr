@@ -23,7 +23,7 @@ services:
   api:
     build:
       context: ./api
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: container_api
     volumes:
       - ./api:/usr/src/app
