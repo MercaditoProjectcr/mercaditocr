@@ -1,7 +1,8 @@
 node {
    try {   
      stage('Checkout') {
-      checkout scm
+        sh 'git reset --hard'
+        sh 'git pull develop -f'
       }
       stage('Environment') {
         sh 'git --version'
