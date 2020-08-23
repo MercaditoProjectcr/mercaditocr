@@ -35,21 +35,21 @@ services:
     networks:
       - network
     command: yarn dev
-    restart: always
-  ########################
-  # SETUP WEB CONTAINER
-  ########################
-  web:
-    container_name: container_web
-    build:
-      context: ./web
-      dockerfile: Dockerfile
-    # links:
-    #   - api
-    ports:
-      - ${WEB_PORT}:${WEB_PORT}
-    networks:
-      - network
+    # restart: always
+  # ########################
+  # # SETUP WEB CONTAINER
+  # ########################
+  # web:
+  #   container_name: container_web
+  #   build:
+  #     context: ./web
+  #     dockerfile: Dockerfile
+  #   # links:
+  #   #   - api
+  #   ports:
+  #     - ${WEB_PORT}:${WEB_PORT}
+  #   networks:
+  #     - network
 
 networks:
     network:
