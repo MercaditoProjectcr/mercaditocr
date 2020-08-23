@@ -8,7 +8,7 @@ services:
     image: mongo:latest
     env_file: .env
     ports:
-      - "27017:27017"
+      - ${MONGO_PORT}:${MONGO_PORT}
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
@@ -25,10 +25,11 @@ services:
       context: ./api
       dockerfile: Dockerfile
     container_name: container_api
+    env_file: .env
     volumes:
       - ./api:/usr/src/app
     ports:
-      - "5000:5000"
+      - ${API_PORT}:${API_PORT}
     links:
       - mongodb
     networks:
@@ -46,7 +47,7 @@ services:
     # links:
     #   - api
     ports:
-      - "80:80"
+      - ${WEB_PORT}:${WEB_PORT}
     networks:
       - network
 
