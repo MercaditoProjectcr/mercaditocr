@@ -19,19 +19,19 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: npm install and test API
+    - name: yarn install and test API
       working-directory: ./api
       run: |
-        npm install
-        npm test
+        yarn install
+        yarn test
       env:
         CI: true
 
-    - name: npm install and test WEB
+    - name: yarn install and test WEB
       working-directory: ./web
       run: |
-        npm install
-        npm test
+        yarn install
+        yarn test
       env:
         CI: true
 
