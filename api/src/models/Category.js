@@ -21,11 +21,11 @@ const dto = {
   //   }
   // ]
   SubCategories: [
-   {
-    type: Schema.Types.ObjectId, 
-    ref: 'categories'
-   }
-  ]
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'categories',
+    },
+  ],
 };
 class Category {
   initSchema() {
@@ -33,11 +33,11 @@ class Category {
     schema.pre(
       'save',
       function (next) {
-        console.log(next); 
+        console.log(next);
         return next();
       },
       function (err) {
-        console.log(err); 
+        console.log(err);
         next(err);
       }
     );
@@ -46,7 +46,7 @@ class Category {
   }
 
   getInstance() {
-    if (!mongoose.connection.models['categories']) {
+    if (!mongoose.connection.models.categories) {
       this.initSchema();
     }
     return mongoose.model('categories');
