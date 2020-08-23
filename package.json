@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "prettier-format": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\"",
+    "prettier-format": "prettier **/*.js",
     "lint": "eslint . --ext .ts"
   },
   "husky": {
