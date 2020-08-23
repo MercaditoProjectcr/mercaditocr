@@ -1,7 +1,7 @@
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarría
+ * Author: Jose Chavarrï¿½a
  * Github: @josechavarriacr
  */
 import { Router, response } from 'express';
