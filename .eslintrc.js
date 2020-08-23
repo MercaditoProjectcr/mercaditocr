@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2020: true,
@@ -21,8 +22,9 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['react', 'prettier', 'no-loops'],
   rules: {
+    'no-loops/no-loops': 2,
     'prettier/prettier': ['error', { singleQuote: true, parser: 'flow' }],
     'class-methods-use-this': 'off',
     'no-param-reassign': 'off',
