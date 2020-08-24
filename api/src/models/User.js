@@ -1,6 +1,7 @@
-import mongoose, { Schema } from 'mongoose';
-import uniqueValidator from 'mongoose-unique-validator';
-import bcrypt from 'bcryptjs';
+/* eslint-disable consistent-return */
+import mongoose, { Schema } from 'mongoose'
+import uniqueValidator from 'mongoose-unique-validator'
+import bcrypt from 'bcryptjs'
 
 const dto = {
   name: {
@@ -49,34 +50,33 @@ const dto = {
       required: false,
     },
   },
-};
-
+}
 
 class User {
   initSchema() {
-    const schema = new Schema(dto, { timestamps: true });
+    const schema = new Schema(dto, { timestamps: true })
     schema.pre('save', function (next) {
       if (!this.isModified('password')) {
-        return next();
+        return next()
       }
       bcrypt.hash(this.password, 8, (err, hash) => {
         if (err) {
-          return next(err);
+          return next(err)
         }
-        this.password = hash;
-        next();
-      });
-    });
-    schema.plugin(uniqueValidator);
-    mongoose.model('users', schema);
+        this.password = hash
+        next()
+      })
+    })
+    schema.plugin(uniqueValidator)
+    mongoose.model('users', schema)
   }
 
   getInstance() {
-    if (!mongoose.connection.models['users']) {
-      this.initSchema();
+    if (!mongoose.connection.models.users) {
+      this.initSchema()
     }
-    return mongoose.model('users');
+    return mongoose.model('users')
   }
 }
 
-export default User;
+export default User

@@ -1,88 +1,30 @@
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarría
+ * Author: Jose ChavarrÃ­a
  * Github: @josechavarriacr
  */
-import UserService from  "./../services/UserService";
+import UserService from '../services/UserService'
+import Controller from './Controller'
+import User from '../models/User'
 
-class UserController {
-  constructor() {
-    this.service = new UserService();
-    this.findAll = this.findAll.bind(this);
-    this.findOne = this.findOne.bind(this);
-    this.findByEmail = this.findByEmail.bind(this);
-    this.singIn = this.singIn.bind(this);
-    this.singUp = this.singUp.bind(this);
-    this.update = this.update.bind(this);
-    this.remove = this.remove.bind(this);
-  }
-  
-  async findOne(req, res, next) {
-    try {
-      const { id } = req.params;
-      const response = await this.service.findOne(id);
-      return res.status(response.statusCode).send(response);
-    } catch (error) {
-      next(error.message);
-    }
-  }
-
-  async findAll(req, res, next) {
-    try {
-      const response = await this.service.findAll(req.params);
-      return res.status(response.statusCode).send(response);
-    } catch (error) {
-      next(error.message);
-    }
-  }
-
-  async singUp(req, res, next) {
-   try {
-    const response = await this.service.signUp(req.body)
-    return res.status(response.statusCode).send(response);
-   } catch (error) {
-     next(error.message)
-   }
-  }
-
-  async findByEmail(req, res, next) {
-    try {
-      const response = await this.service.findByEmail(req.body);
-      return res.status(response.statusCode).send(response);
-    } catch (error) {
-      next(error.message);
-    }
-  }
-  async singIn(req, res, next) {
-    try {
-      const response = await this.service.signIn(req.body);
-      return res.status(response.statusCode).send(response);
-   } catch (error) {
-     next(error.message)
-   }
+const userService = new UserService(new User().getInstance())
+class UserController extends Controller {
+  constructor(service) {
+    super(service)
+    this.service = service
   }
 
   async update(req, res, next) {
     try {
-      const { id } = req.params;
-      const response = await this.service.update(id, req);
-      return res.status(response.statusCode).send(response);
+      const { id } = req.params
+      const response = await this.service.update(id, req)
+      return res.status(response.statusCode).send(response)
     } catch (error) {
-      next(error.message);
+      next(error.message)
+      return false
     }
   }
-
-  async remove(req, res, next) {
-    try {
-      const { id } = req.params;
-      const response = await this.service.remove(id);
-      return res.status(response.statusCode).send(response);
-    } catch (error) {
-      next(error.message);
-    }
-  }
-  
 }
 
-export default new UserController;
+export default new UserController(userService)

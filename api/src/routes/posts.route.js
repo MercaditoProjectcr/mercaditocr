@@ -1,23 +1,19 @@
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarría
+ * Author: Jose ChavarrÃ­a
  * Github: @josechavarriacr
  */
-import { Router } from "express";
-import PostController from "../controllers/PostController";
-const { findAll, findOne, create, update, remove } = PostController;
-const routerPost = Router();
+import { Router } from 'express'
+import PostController from '../controllers/PostController'
+
+const { findAll, findOne, create, update, remove } = PostController
+const routerPost = Router()
 
 // /api/post
-routerPost.route('/')
-.get(findAll)
-.post(create)
+routerPost.route('/').get(findAll).post(create)
 
 // api/post:id
-routerPost.route('/:id')
-.get(findOne)
-.put(update)
-.delete(remove)
+routerPost.route('/:id').get(findOne).put(update).delete(remove)
 
-export default routerPost;
+export default routerPost

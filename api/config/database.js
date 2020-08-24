@@ -1,10 +1,10 @@
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarría
+ * Author: Jose ChavarrÃ­a
  * Github: @josechavarriacr
  */
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 import config from './env'
 
 const options = {
@@ -17,17 +17,18 @@ const options = {
   serverSelectionTimeoutMS: 5000,
   socketTimeoutMS: 45000,
   family: 4,
-};
+}
 
 class Connection {
   constructor() {
     try {
-      console.log('Establish new connection with the DB');
-      mongoose.connect(config.mongodbUrl, options);
+      // eslint-disable-next-line no-console
+      console.log('Establish new connection with the DB')
+      mongoose.connect(config.mongodbUrl, options)
     } catch (error) {
-      throw new Error(error);
+      throw new Error(error)
     }
   }
 }
 
-export default new Connection();
+export default new Connection()

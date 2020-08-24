@@ -1,11 +1,12 @@
+/* eslint-disable no-console */
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarr�a
+ * Author: Jose Chavarría
  * Github: @josechavarriacr
  */
-import mongoose, { Schema } from 'mongoose';
-import uniqueValidator from 'mongoose-unique-validator';
+import mongoose, { Schema } from 'mongoose'
+import uniqueValidator from 'mongoose-unique-validator'
 
 const dto = {
   name: {
@@ -19,86 +20,85 @@ const dto = {
   options: {
     express: {
       type: Boolean,
-      required: false
+      required: false,
     },
     paymentTerminal: {
       type: Boolean,
-      required: false
+      required: false,
     },
     paymentOnline: {
-        type: Boolean,
-        required: false
-    }
+      type: Boolean,
+      required: false,
+    },
   },
   images: [
     {
-        url: {
-            type: String,
-            required: false
-        }
-    }
+      url: {
+        type: String,
+        required: false,
+      },
+    },
   ],
   contacts: {
-      facebook: {
-        type: String,
-        required: false
-      },
-      instagram: {
-          type: String,
-          required: false
-      },
-      twitter: {
-          type: String,
-          required: false
-      },
-      linkedin: {
-          type: String,
-          required: false
-      },
-      whatapp: {
-          type: Number,
-          required: false
-      },
-      website: {
-          type: String,
-          required: false
-      }
-  },
-  owner: { 
-      type: Schema.Types.ObjectId, 
-      ref: 'users' 
+    facebook: {
+      type: String,
+      required: false,
     },
-    subcategories: [
-      {
-        type: Schema.Types.ObjectId, 
-        ref: 'subcategories' 
-      }
-    ]
-};
+    instagram: {
+      type: String,
+      required: false,
+    },
+    twitter: {
+      type: String,
+      required: false,
+    },
+    linkedin: {
+      type: String,
+      required: false,
+    },
+    whatapp: {
+      type: Number,
+      required: false,
+    },
+    website: {
+      type: String,
+      required: false,
+    },
+  },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'users',
+  },
+  subcategories: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'subcategories',
+    },
+  ],
+}
 
 class Product {
   initSchema() {
-    const schema = new Schema(dto, { timestamps: true });
+    const schema = new Schema(dto, { timestamps: true })
     schema.pre(
       'save',
-      function (next) {
-        console.log(next); 
-        return next();
+      (next) => {
+        console.log(next)
+        return next()
       },
-      function (err) {
-        console.log(err); 
-        next(err);
+      (err) => {
+        console.log(err)
       }
-    );
-    schema.plugin(uniqueValidator);
-    mongoose.model('products', schema);
+    )
+    schema.plugin(uniqueValidator)
+    mongoose.model('products', schema)
   }
 
   getInstance() {
-    if (!mongoose.connection.models['products']) {
-      this.initSchema();
+    if (!mongoose.connection.models.products) {
+      this.initSchema()
     }
-    return mongoose.model('products');
+    return mongoose.model('products')
   }
 }
-export default Product;
+export default Product

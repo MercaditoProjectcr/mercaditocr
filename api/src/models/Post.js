@@ -1,12 +1,14 @@
+/* eslint-disable no-console */
+
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarría
+ * Author: Jose ChavarrÃ­a
  * Github: @josechavarriacr
  */
-import mongoose, { Schema } from 'mongoose';
-import uniqueValidator from 'mongoose-unique-validator';
-import slugify from 'slugify';
+import mongoose, { Schema } from 'mongoose'
+import uniqueValidator from 'mongoose-unique-validator'
+import slugify from 'slugify'
 
 const dto = {
   title: {
@@ -29,43 +31,42 @@ const dto = {
   contacts: {
     name: {
       type: String,
-    required: false
+      required: false,
     },
     num: {
       type: Number,
-      required: false
-    }
-  }
+      required: false,
+    },
+  },
 }
 class Post {
-
   initSchema() {
-    const schema = new Schema(dto, { timestamps: true });
+    const schema = new Schema(dto, { timestamps: true })
     schema.pre(
       'save',
-      function(next) {
-        let post = this;
+      (next) => {
+        const post = this
         if (!post.isModified('title')) {
-          return next();
+          return next()
         }
-        post.slug = slugify(post.title, '_');
-        console.log('set slug', post.slug);
-        return next();
+        post.slug = slugify(post.title, '_')
+        console.log('set slug', post.slug)
+        return next()
       },
-      function(err) {
-        next(err);
+      (err) => {
+        console.log(err)
       }
-    );
-    schema.plugin(uniqueValidator);
-    mongoose.model('post', schema);
+    )
+    schema.plugin(uniqueValidator)
+    mongoose.model('post', schema)
   }
 
   getInstance() {
-    if (!mongoose.connection.models['post']) {
-      this.initSchema();
+    if (!mongoose.connection.models.post) {
+      this.initSchema()
     }
-    return mongoose.model('post');
+    return mongoose.model('post')
   }
 }
 
-export default Post;
+export default Post

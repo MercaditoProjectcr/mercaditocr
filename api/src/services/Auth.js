@@ -1,95 +1,107 @@
+/* eslint-disable no-underscore-dangle */
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarría
+ * Author: Jose ChavarrÃ­a
  * Github: @josechavarriacr
  */
-import config from '../config'
-import { User } from '../resources/user/user.model'
-import jwt from 'jsonwebtoken'
+import bcrypt from 'bcryptjs'
+import Token from './Token'
 
-export const newToken = user => {
-  return jwt.sign({ id: user.id }, config.secrets.jwt, {
-    expiresIn: config.secrets.jwtExp
-  })
-}
-
-export const verifyToken = token =>
-  new Promise((resolve, reject) => {
-    jwt.verify(token, config.secrets.jwt, (err, payload) => {
-      if (err) return reject(err)
-      resolve(payload)
-    })
-  })
-
-export const signup = async (req, res) => {
-  if (!req.body.email || !req.body.password) {
-    return res.status(400).send({ message: 'need email and password' })
+class AuthService {
+  constructor(model) {
+    this.model = model
   }
 
-  try {
-    const user = await User.create(req.body)
-    const token = newToken(user)
-    return res.status(201).send({ token })
-  } catch (e) {
-    return res.status(500).end()
-  }
-}
-
-export const signin = async (req, res) => {
-  if (!req.body.email || !req.body.password) {
-    return res.status(400).send({ message: 'need email and password' })
+  isEmptyEmailAndPassword(params) {
+    const { email, password } = params
+    if (!email) throw new Error('email is missing')
+    if (!password) throw new Error('passwords is missing')
   }
 
-  const invalid = { message: 'Invalid email and passdword combination' }
-
-  try {
-    const user = await User.findOne({ email: req.body.email })
-      .select('email password')
-      .exec()
-
-    if (!user) {
-      return res.status(401).send(invalid)
+  async signUp(params) {
+    try {
+      this.isEmptyEmailAndPassword(params)
+      const { Roles } = params
+      if (!Roles) {
+        params.Roles = {
+          type: 'user', // user, owner, client
+        }
+      }
+      const Preferences = {
+        img: '/home/img',
+        location: 'Yor currect location',
+      }
+      params.username = params.email
+      const newUser = {
+        ...params,
+        Preferences,
+      }
+      const user = await this.model.create(newUser)
+      const token = Token.getNew(user)
+      user.password = undefined
+      return {
+        status: true,
+        statusCode: 201,
+        user,
+        token,
+      }
+    } catch (error) {
+      throw new Error(error)
     }
+  }
 
-    const match = await user.checkPassword(req.body.password)
+  async signIn(params) {
+    try {
+      this.isEmptyEmailAndPassword(params)
+      const { email, password } = params
+      const user = await this.model.findOne({ email })
+      if (!user) {
+        return {
+          status: false,
+          statusCode: 404,
+          message: 'User not found',
+        }
+      }
+      const match = await bcrypt.compare(password, user.password)
 
-    if (!match) {
-      return res.status(401).send(invalid)
+      if (!match) {
+        return {
+          status: false,
+          statusCode: 401,
+          message: 'Invalid email and passdword combination',
+        }
+      }
+
+      const token = Token.getNew(user)
+      user.password = undefined
+      return {
+        status: true,
+        statusCode: 200,
+        user,
+        token,
+      }
+    } catch (error) {
+      throw new Error(error)
     }
+  }
 
-    const token = newToken(user)
-    return res.status(201).send({ token })
-  } catch (e) {
-    console.error(e)
-    res.status(500).end()
+  /**
+   * TODO added logic for changing status to ACTIVE user
+   * */
+  async verifyEmail(params) {
+    try {
+      const { email } = params
+      if (!email) throw new Error('email is missing')
+      const user = await this.model.findAll({ email })
+      if (!user.lenght) throw new Error('user not found')
+      // logic here
+      // const data = await this.model.udpate(object)
+      return user
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 }
 
-export const protect = async (req, res, next) => {
-  const bearer = req.headers.authorization
-
-  if (!bearer || !bearer.startsWith('Bearer ')) {
-    return res.status(401).end()
-  }
-
-  const token = bearer.split('Bearer ')[1].trim()
-  let payload
-  try {
-    payload = await verifyToken(token)
-  } catch (e) {
-    return res.status(401).end()
-  }
-
-  const user = await User.findById(payload.id)
-    .select('-password')
-    .lean()
-    .exec()
-
-  if (!user) {
-    return res.status(401).end()
-  }
-
-  req.user = user
-  next()
-}
+export default AuthService

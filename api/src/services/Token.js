@@ -1,29 +1,30 @@
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarría
+ * Author: Jose ChavarrÃ­a
  * Github: @josechavarriacr
  */
-import jwt from 'jsonwebtoken';
-import config from '../../config/env';
+import jwt from 'jsonwebtoken'
+import config from '../../config/env'
 
-function getNew(user) {
+const getNew = (user) => {
   try {
     return jwt.sign({ id: user.id }, config.secrets.jwt, {
       expiresIn: config.secrets.jwtExp,
-    });
+    })
   } catch (error) {
-    throw new Error(error);
+    throw new Error(error)
   }
 }
-async function verify(token) {
+
+const verify = async (token) => {
   return new Promise((resolve, reject) => {
     jwt.verify(token, config.secrets.jwt, (error, payload) => {
-      if (error) return reject(error);
-      return resolve(payload);
-    });
-  });
+      if (error) return reject(error)
+      return resolve(payload)
+    })
+  })
 }
 
-const Token = { getNew, verify };
-export default Token;
+const Token = { getNew, verify }
+export default Token

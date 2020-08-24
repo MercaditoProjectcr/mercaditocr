@@ -1,15 +1,16 @@
+/* eslint-disable no-console */
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarría
+ * Author: Jose ChavarrÃ­a
  * Github: @josechavarriacr
  */
-function getErrors(err, req, res, next) {
-  console.error(err.stack);
+const getErrors = (err, req, res, next) => {
+  console.error(err)
   res.status(500).send({
-    status: true,
+    status: false,
     message: err,
-  });
+  })
 }
 
-export default getErrors;
+export default getErrors
