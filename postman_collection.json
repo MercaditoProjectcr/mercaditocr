@@ -32,12 +32,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/posts",
-							"protocol": "http",
+							"raw": "{{domain}}/api/posts",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"posts"
@@ -58,12 +56,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/posts/5e8907d0aa907d3cd82c7eb1",
-							"protocol": "http",
+							"raw": "{{domain}}/api/posts/5e8907d0aa907d3cd82c7eb1",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"posts",
@@ -101,12 +97,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/posts/1",
-							"protocol": "http",
+							"raw": "{{domain}}/api/posts/1",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"posts",
@@ -128,12 +122,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/posts/1",
-							"protocol": "http",
+							"raw": "{{domain}}/api/posts/1",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"posts",
@@ -164,12 +156,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/posts",
-							"protocol": "http",
+							"raw": "{{domain}}/api/posts",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"posts"
@@ -213,12 +203,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/categories",
-							"protocol": "http",
+							"raw": "{{domain}}/api/categories",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"categories"
@@ -242,12 +230,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/categories/5efe3febafad5129b0ae1ab1",
-							"protocol": "http",
+							"raw": "{{domain}}/api/categories/5efe3febafad5129b0ae1ab1",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"categories",
@@ -278,12 +264,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/categories/5efe3cd560438226bea117e8",
-							"protocol": "http",
+							"raw": "{{domain}}/api/categories/5efe3cd560438226bea117e8",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"categories",
@@ -305,12 +289,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/categories/1",
-							"protocol": "http",
+							"raw": "{{domain}}/api/categories/1",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"categories",
@@ -390,12 +372,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/products",
-							"protocol": "http",
+							"raw": "{{domain}}/api/products",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"products"
@@ -419,12 +399,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/products/5efef10a8daa984df50fe84f",
-							"protocol": "http",
+							"raw": "{{domain}}/api/products/5efef10a8daa984df50fe84f",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"products",
@@ -455,12 +433,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/products/5efe3cd560438226bea117e8",
-							"protocol": "http",
+							"raw": "{{domain}}/api/products/5efe3cd560438226bea117e8",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"products",
@@ -482,12 +458,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/products/1",
-							"protocol": "http",
+							"raw": "{{domain}}/api/products/1",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"products",
@@ -518,12 +492,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/products",
-							"protocol": "http",
+							"raw": "{{domain}}/api/products",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"products"
@@ -562,12 +534,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/users/5efe21bd60438226bea117e5",
-							"protocol": "http",
+							"raw": "{{domain}}/api/users/5efe21bd60438226bea117e5",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"users",
@@ -589,12 +559,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/users",
-							"protocol": "http",
+							"raw": "{{domain}}/api/users",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"users"
@@ -642,12 +610,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/users/5e8950bfd972ee56a85ad84d",
-							"protocol": "http",
+							"raw": "{{domain}}/api/users/5e8950bfd972ee56a85ad84d",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"users",
@@ -669,12 +635,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/users/5e895253d972ee56a85ad853",
-							"protocol": "http",
+							"raw": "{{domain}}/api/users/5e895253d972ee56a85ad853",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"users",
@@ -705,12 +669,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/public/signin",
-							"protocol": "http",
+							"raw": "{{domain}}/api/public/signin",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"public",
@@ -735,12 +697,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/public/signup",
-							"protocol": "http",
+							"raw": "{{domain}}/api/public/signup",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"public",
@@ -765,12 +725,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/public/verifyEmail",
-							"protocol": "http",
+							"raw": "{{domain}}/api/public/verifyEmail",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"public",
@@ -781,26 +739,23 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:5000/test",
+					"name": "test",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZDgxODUwYzdiZTAzMWI0ODNiNjAwNSIsImlhdCI6MTU5MTIyMDMyMiwiZXhwIjoxNTkxMzA2NzIyfQ.TRl_qp4imrnNSNG6DSHCwO2BI6yPQ98OiogucraKKsc",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMWQ1NjU0YzhkZWRhMDAzYjVlMzMzZCIsImlhdCI6MTU5ODE2OTgyNSwiZXhwIjoxNjI5NzA1ODI1fQ._PYqlTDxCZ9wBWxQjwvYqg7pDt2CCvWmuKZ5Mu7YAJw",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/test",
-							"protocol": "http",
+							"raw": "{{domain}}/api",
 							"host": [
-								"localhost"
+								"{{domain}}"
 							],
-							"port": "5000",
 							"path": [
-								"api",
-								"test"
+								"api"
 							]
 						}
 					},
@@ -912,9 +867,9 @@
 	],
 	"variable": [
 		{
-			"id": "00238556-6a81-46c2-befa-8dcb024c4f30",
+			"id": "fc3974f8-7ab4-465c-8b3f-e025a7a071ec",
 			"key": "token",
-			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZmUyMWJkNjA0MzgyMjZiZWExMTdlNSIsImlhdCI6MTU5MzcxMzA4NSwiZXhwIjoxNjI1MjQ5MDg1fQ.kew_FwHWE5tHz4Bqd2b0aibAzvawCBcDg6U3bxwPq1Y"
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMWQ1NjU0YzhkZWRhMDAzYjVlMzMzZCIsImlhdCI6MTU5NTc1ODE2NCwiZXhwIjoxNjI3Mjk0MTY0fQ.ZXI4dWekcdjpdtv-MXCpU0frlnbZAgB6Z9-DJG55DHA"
 		}
 	],
 	"protocolProfileBehavior": {}
