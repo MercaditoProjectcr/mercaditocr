@@ -7,7 +7,7 @@ import AuthService from '../services/Auth'
  * Github: @josechavarriacr
  */
 
- class AuthController {
+class AuthController {
   constructor() {
     this.service = new AuthService()
     this.singIn = this.singIn.bind(this)

@@ -23,4 +23,4 @@ module.exports = {
     'no-useless-constructor': 'off',
     'func-names': 'off',
   },
-};
+}
