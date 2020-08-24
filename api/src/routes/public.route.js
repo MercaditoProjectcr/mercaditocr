@@ -5,9 +5,9 @@
  * Github: @josechavarriacr
  */
 import { Router } from 'express'
-import UserController from '../controllers/UserController'
+import AuthController from '../controllers/AuthController'
 
-const { singUp, findByEmail, singIn } = UserController
+const { singUp, verifyEmail, singIn } = AuthController
 
 const routerPublic = Router()
 
@@ -15,6 +15,6 @@ routerPublic.route('/signup').post(singUp)
 
 routerPublic.route('/signin').post(singIn)
 
-routerPublic.route('/verifyEmail').post(findByEmail)
+routerPublic.route('/verifyEmail').post(verifyEmail)
 
 export default routerPublic

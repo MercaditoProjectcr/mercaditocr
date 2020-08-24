@@ -6,12 +6,11 @@
  * Github: @josechavarriacr
  */
 import bcrypt from 'bcryptjs'
-import User from '../models/User'
 import Token from './Token'
 
 class AuthService {
-  constructor() {
-    this.model = new User().getInstance()
+  constructor(model) {
+    this.model = model
   }
 
   isEmptyEmailAndPassword(params) {
@@ -82,6 +81,23 @@ class AuthService {
         user,
         token,
       }
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  /**
+   * TODO added logic for changing status to ACTIVE user
+   * */
+  async verifyEmail(params) {
+    try {
+      const { email } = params
+      if (!email) throw new Error('email is missing')
+      const user = await this.model.findAll({ email })
+      if (!user.lenght) throw new Error('user not found')
+      // logic here
+      // const data = await this.model.udpate(object)
+      return user
     } catch (error) {
       throw new Error(error)
     }

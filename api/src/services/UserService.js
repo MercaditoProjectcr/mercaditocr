@@ -17,15 +17,17 @@ class UserService extends Service {
 
   async update(id, req) {
     try {
-      const data = req.body
-      const img = await this.img.sendAvatar(req.files)
-      const Preferences = { img }
-      data.Preferences = Preferences
+      const { files, body } = req
       const opt = {
         new: true,
         upsert: true,
       }
-      const user = await this.model.findByIdAndUpdate(id, data, opt)
+      if (files) {
+        const img = await this.img.sendAvatar(files)
+        const Preferences = { img }
+        body.Preferences = Preferences
+      }
+      const user = await this.model.findByIdAndUpdate(id, body, opt)
       return {
         status: true,
         statusCode: 202,

@@ -82,7 +82,11 @@ class Service {
 
   async update(id, data) {
     try {
-      const item = await this.model.findByIdAndUpdate(id, data, { new: true })
+      const opt = {
+        new: true,
+        upsert: true,
+      }
+      const item = await this.model.findByIdAndUpdate(id, data, opt)
       return {
         status: true,
         statusCode: 202,

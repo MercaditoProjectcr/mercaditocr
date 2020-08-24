@@ -1,15 +1,18 @@
-import AuthService from '../services/Auth'
-
 /*
- * Created on Sun May 24 2020
+ * Created on Sun Aug 23 2020
  *
  * Author: Jose Chavarría
  * Github: @josechavarriacr
  */
 
+import AuthService from '../services/Auth'
+import User from '../models/User'
+
+const userService = new AuthService(new User().getInstance())
+
 class AuthController {
-  constructor() {
-    this.service = new AuthService()
+  constructor(service) {
+    this.service = service
     this.singIn = this.singIn.bind(this)
     this.singUp = this.singUp.bind(this)
     this.verifyEmail = this.verifyEmail.bind(this)
@@ -46,4 +49,4 @@ class AuthController {
   }
 }
 
-export default new AuthController()
+export default new AuthController(userService)

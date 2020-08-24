@@ -5,10 +5,10 @@
  * Author: Jose Chavarría
  * Github: @josechavarriacr
  */
-const getErrors = (err, res) => {
-  console.error(err.stack)
+const getErrors = (err, req, res, next) => {
+  console.error(err)
   res.status(500).send({
-    status: true,
+    status: false,
     message: err,
   })
 }
