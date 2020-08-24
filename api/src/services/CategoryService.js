@@ -1,17 +1,18 @@
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarr�a
+ * Author: Jose Chavarría
  * Github: @josechavarriacr
  */
-import Service from './Service';
-import SubCategory from '../models/SubCategory';
+import Service from './Service'
+import SubCategory from '../models/SubCategory'
 
 class CategoryService extends Service {
   constructor(model) {
-    super(model);
-    this.subCategory = new SubCategory().getInstance();
+    super(model)
+    this.subCategory = new SubCategory().getInstance()
   }
+
   async create(data) {
     try {
       const objData = {}
@@ -19,21 +20,21 @@ class CategoryService extends Service {
       const { SubCategories } = data
       if (SubCategories) {
         const aux = await this.subCategory.create(SubCategories)
-        objData.SubCategories = aux.map(value => {
+        objData.SubCategories = aux.map((value) => {
+          // eslint-disable-next-line no-underscore-dangle
           return value._id
         })
       }
-      const item = await this.model.create(objData);
-      if (item)
-        return {
-          status: true,
-          statusCode: 201,
-          item
-        };
+      const item = await this.model.create(objData)
+      return {
+        status: true,
+        statusCode: 201,
+        item,
+      }
     } catch (error) {
-      throw new Error(error);
+      throw new Error(error)
     }
   }
-};
+}
 
-export default CategoryService;
+export default CategoryService

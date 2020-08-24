@@ -1,30 +1,18 @@
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarría
+ * Author: Jose ChavarrÃ­a
  * Github: @josechavarriacr
  */
-import { Router } from 'express';
-import UserController from '../controllers/UserController';
-const { findAll, findOne, singUp, findByEmail, singIn, update, remove } = UserController;
+import { Router } from 'express'
+import UserController from '../controllers/UserController'
 
-const routerUser = Router();
+const { findAll, findOne, update, remove } = UserController
 
-routerUser.route('/')
-.get(findAll)
+const routerUser = Router()
 
-routerUser.route('/:id')
-.get(findOne)
-.put(update)
-.delete(remove)
+routerUser.route('/').get(findAll)
 
-routerUser.route('/signup')
-.post(singUp)
+routerUser.route('/:id').get(findOne).put(update).delete(remove)
 
-routerUser.route('/signin')
-.post(singIn)
-
-routerUser.route('/verifyEmail')
-.post(findByEmail)
-
-export default routerUser;
+export default routerUser

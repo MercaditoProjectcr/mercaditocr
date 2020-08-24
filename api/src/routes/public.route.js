@@ -1,22 +1,20 @@
 /*
  * Created on Sun May 24 2020
  *
- * Author: Jose Chavarr�a
+ * Author: Jose Chavarría
  * Github: @josechavarriacr
  */
-import { Router, response } from 'express';
-import UserController from '../controllers/UserController';
-const { singUp, findByEmail, singIn } = UserController;
+import { Router } from 'express'
+import UserController from '../controllers/UserController'
 
-const routerPublic = Router();
+const { singUp, findByEmail, singIn } = UserController
 
-routerPublic.route('/signup')
-.post(singUp)
+const routerPublic = Router()
 
-routerPublic.route('/signin')
-.post(singIn)
+routerPublic.route('/signup').post(singUp)
 
-routerPublic.route('/verifyEmail')
-.post(findByEmail)
+routerPublic.route('/signin').post(singIn)
 
-export default routerPublic;
+routerPublic.route('/verifyEmail').post(findByEmail)
+
+export default routerPublic
