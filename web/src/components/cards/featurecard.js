@@ -8,6 +8,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import './featurecard.style.css'; 
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 260,
@@ -27,10 +29,10 @@ const FeatureCard = (props) => {
   const text = props.text;    
   const action = props.text;    
   return (
-    <Card className={classes.root}>
+    <Card className="root">
       <CardActionArea>
         <CardMedia
-          className={classes.media}
+          className="media"
           image={cardContent.image}
           title="cardImage"
         />

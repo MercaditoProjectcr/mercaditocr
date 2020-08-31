@@ -55,10 +55,10 @@ const Features = () => {
             ¿Que ofrecemos?
           </Typography>
         </Grid>
-        <Grid item md={8}>
-          <Grid container direction="row" spacing={3}>
+        <Grid item xs={12} md={8}>
+          <Grid container direction="row" spacing={3} >
               {cardInfo.map((item, index) => {
-                return <Grid item md={4}><FeatureCard content={item} /></Grid> ;
+                return <Grid key={index} item xs={12} md={4}><FeatureCard  content={item} /></Grid> ;
               })}
           </Grid>
         </Grid>
