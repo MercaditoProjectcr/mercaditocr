@@ -48,16 +48,16 @@ const Team = () => {
   const classes = useStyles();
   return (
     <>
-      <Grid container direction="column" justify="center" alignItems="center" spacing={3} className="homeFeature">
-        <Grid item xs md={8}>
+      <Grid container direction="column" justify="center" alignItems="center" spacing={3}  className="homeFeature">
+        <Grid item xs={10} md={8}>
           <Typography variant="h4" component="h4">
             Conoce al equipo detras de Mercadito.cr
           </Typography>
         </Grid>
-        <Grid item md={8}>
-          <Grid container direction="row" spacing={6}>
+        <Grid item xs={12} md={8}>
+          <Grid container direction="row" spacing={3}>
               {cardInfo.map((item, index) => {
-                return <Grid item md={4}><FeatureCard content={item} /></Grid> ;
+                return <Grid key={index} item xs={12} md={4}><FeatureCard content={item}  /></Grid> ;
               })}
           </Grid>
         </Grid>

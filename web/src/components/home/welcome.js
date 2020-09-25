@@ -33,7 +33,7 @@ const Welcome = () => {
       <CssBaseline />
       <Container maxWidth="xl" className="welcomeContainer">
         <Grid container direction="column" justify="center" alignItems="center" className="welcomeElements">
-          <Grid item xs md={8}>
+          <Grid item xs={10} md={8}>
             <Typography variant="h1" component="h2">
               Mercadito.cr
             </Typography>
@@ -41,7 +41,7 @@ const Welcome = () => {
               Impulsa tu negocio en la nueva era de la virtualización...
             </Typography>
           </Grid>
-          <Grid item md={8} className={classes.root}>
+          <Grid item xs={10} md={8} className={classes.root}>
             <InputBase
               className={classes.input}
               placeholder="Encuentra algo de tu interés"
@@ -57,7 +57,7 @@ const Welcome = () => {
               <SearchIcon />
             </IconButton>
           </Grid>
-          <Grid item md={8}>
+          <Grid item xs={10} md={8}>
              <Button
                 fullWidth
                 variant="outlined"

@@ -1,0 +1,35 @@
+.root{
+    max-width: 260px;
+    width: 20vw;
+}
+.media {
+    height: 240px;
+}
+
+@media all and (max-width: 640px) {
+    .root{ 
+        max-width: 300px;
+        width: 70vw;
+        margin: auto;
+    }
+    .media{
+        height: 250px;
+    }
+    .MuiGrid-spacing-xs-3 {
+        width: calc(100% + 10px);
+    }
+}
+
+@media all and (max-width: 768px){
+
+
+}
+ 
+@media all and (max-width: 1024px){
+
+}
+ 
+@media all and (max-width: 1200px){
+
+
+}

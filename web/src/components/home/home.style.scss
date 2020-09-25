@@ -14,3 +14,27 @@
 .homeFeature{
     padding-top: 40px;
 }
+
+
+@media all and (max-width: 640px) {
+    .welcomeElements {
+        margin: auto;
+    }
+    .welcomeElements h2{
+        font-size: 4em;;
+    }
+}
+
+@media all and (max-width: 768px){
+
+
+}
+ 
+@media all and (max-width: 1024px){
+
+}
+ 
+@media all and (max-width: 1200px){
+
+
+}
